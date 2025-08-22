@@ -1,105 +1,105 @@
-/*.right-column {*/
-/*  display: none;*/
+.right-column {
+  display: none;
+}
+
+.left-column {
+  padding: var(--space-16);
+}
+
+.welcoming-title {
+  font-weight: 600;
+  font-size: var(--font-size-24);
+}
+
+/*.form {*/
+/*  max-width: 338px;*/
 /*}*/
 
-/*.left-column {*/
-/*  padding: var(--space-16);*/
+/*.cta-btn {*/
+/*  width: 100%;*/
+/*  margin-top: var(--space-32);*/
 /*}*/
 
-/*.welcoming-title {*/
-/*  font-weight: 600;*/
-/*  font-size: var(--font-size-24);*/
-/*}*/
-
-/*!*.form {*!*/
-/*!*  max-width: 338px;*!*/
-/*!*}*!*/
-
-/*!*.cta-btn {*!*/
-/*!*  width: 100%;*!*/
-/*!*  margin-top: var(--space-32);*!*/
-/*!*}*!*/
-
-/*!*.sign-up-prompt,*!*/
-/*!*.login-prompt {*!*/
-/*!*  font-weight: 500;*!*/
-/*!*  font-size: var(--font-size-14);*!*/
-/*!*  margin-top: var(--space-32);*!*/
-/*!*  text-align: center;*!*/
-/*!*}*!*/
-
-/*!*.sign-up-link,*!*/
-/*!*.log-in-link {*!*/
-/*!*  font-weight: 600;*!*/
-/*!*  text-decoration: underline;*!*/
-/*!*}*!*/
-
-
-/*.counter-container {*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*  gap: 20px;*/
-/*  flex-wrap: wrap;*/
-/*  margin-top: 50px;*/
-/*}*/
-
-/*.counter-card {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  width: 120px;*/
-/*  height: 120px;*/
-/*  border-radius: 8px;*/
-/*  font-weight: 600;*/
-/*  font-family: inherit;*/
-/*  color: black;*/
-/*  box-shadow: 0 2px 6px rgba(0,0,0,0.15);*/
+/*.sign-up-prompt,*/
+/*.login-prompt {*/
+/*  font-weight: 500;*/
+/*  font-size: var(--font-size-14);*/
+/*  margin-top: var(--space-32);*/
 /*  text-align: center;*/
-/*  cursor: pointer;*/
-/*  transition: all 0.3s ease;*/
-/*  transform: scale(1);*/
 /*}*/
 
-/*.counter-card:hover {*/
-/*  transform: scale(1.05) translateY(-5px);*/
-/*  box-shadow: 0 8px 20px rgba(0,0,0,0.25);*/
-/*  filter: brightness(1.1);*/
+/*.sign-up-link,*/
+/*.log-in-link {*/
+/*  font-weight: 600;*/
+/*  text-decoration: underline;*/
 /*}*/
 
-/*.counter-card:active {*/
-/*  transform: scale(0.98) translateY(-2px);*/
-/*  transition: all 0.1s ease;*/
+
+.counter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.counter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: inherit;
+  color: black;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.counter-card:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  filter: brightness(1.1);
+}
+
+.counter-card:active {
+  transform: scale(0.98) translateY(-2px);
+  transition: all 0.1s ease;
+}
+
+/*.counter-card small {*/
+/*  font-weight: 400;*/
+/*  font-size: 0.85rem;*/
+/*  margin-top: 5px;*/
 /*}*/
 
-/*!*.counter-card small {*!*/
-/*!*  font-weight: 400;*!*/
-/*!*  font-size: 0.85rem;*!*/
-/*!*  margin-top: 5px;*!*/
-/*!*}*!*/
+/* media queries */
+@media (min-width: 768px) {
+  .right-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 2px solid var(--black);
+    background-image: url("../images/gears.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+  }
 
-/*!* media queries *!*/
-/*@media (min-width: 768px) {*/
-/*  .right-column {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    border-left: 2px solid var(--black);*/
-/*    background-image: url("../images/gears.png");*/
-/*    background-size: cover;*/
-/*    background-repeat: no-repeat;*/
-/*    background-position: center;*/
-/*    position: relative;*/
-/*  }*/
+  .row {
+    display: flex;
+    min-height: 100vh;
+  }
 
-/*  .row {*/
-/*    display: flex;*/
-/*    min-height: 100vh;*/
-/*  }*/
-
-/*  .left-column,*/
-/*  .right-column {*/
-/*    width: 50%;*/
-/*  }*/
-/*}*/
+  .left-column,
+  .right-column {
+    width: 50%;
+  }
+}
