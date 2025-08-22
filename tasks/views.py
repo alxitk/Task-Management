@@ -1,6 +1,9 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.views import generic
 
+from tasks.forms import TaskSearchForm
 from tasks.models import Worker, Task, TaskType, Position
 
 
@@ -25,3 +28,38 @@ def index(request):
     }
 
     return render(request, "tasks/index.html", context=context)
+
+
+class TasksListView(LoginRequiredMixin, generic.ListView):
+    model = Task
+    context_object_name = "task_list"
+    template_name = "tasks/task_list.html"
+    queryset = Task.objects.all()
+
+    def get_queryset(self):
+        name = self.request.GET.get("name", "")
+        task_type_id = self.kwargs.get("task_type_id")
+        queryset = super().get_queryset()
+        if task_type_id:
+            queryset = queryset.filter(task_type_id=task_type_id)
+        if name:
+            return queryset.filter(name__icontains=name)
+        return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        filtered_queryset = self.get_queryset()
+
+        context["todo_tasks"] = filtered_queryset.filter(status="todo")
+        context["in_progress_tasks"] = filtered_queryset.filter(
+            status="in_progress"
+        )
+        context["done_tasks"] = filtered_queryset.filter(status="done")
+        context["needs_review_tasks"] = filtered_queryset.filter(
+            status="needs_review"
+        )
+
+        name = self.request.GET.get("name", "")
+        context["search_form"] = TaskSearchForm(initial={"name": name})
+        return context
