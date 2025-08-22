@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Project Board - TaskHub</title>
+{% endblock %}
+
+{% block content %}
+<div class="max-width-container">
+
+  <!-- search form -->
+  <div class="search-form">
+    <form action="" method="get" class="search-container">
+      <div class="search-input-wrapper">
+        {{ search_form.name }}
+      </div>
+      <button type="submit" class="search-button">Search</button>
+
+      {% if search_form.name.value %}
+        <a href="{{ request.path }}" class="clear-search">Clear</a>
+      {% endif %}
+    </form>
+
+    {% if search_form.name.value %}
+      <div class="search-results-info
+        {% if todo_tasks or needs_review_tasks or done_tasks or in_progress_tasks %}
+          has-results
+        {% else %}
+          no-results
+        {% endif %}">
+        {% if todo_tasks or needs_review_tasks or done_tasks or in_progress_tasks %}
+          Found results for "{{ search_form.name.value }}"
+        {% else %}
+          No tasks found for "{{ search_form.name.value }}"
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- board view -->
+  <div id="board-view" class="board-view">
+
+    <!-- to do column -->
+    <div>
+      <h2 class="list-header">
+        <span class="circle gray-background"></span>
+        <a href="" class="text">To do</a>
+      </h2>
+      <ul class="tasks-list gray">
+        {% for task in todo_tasks %}
+          <li class="task-item">
+            {% include 'includes/task_card_board.html' %}
+          </li>
+        {% empty %}
+          <li class="task-name">No tasks in todo</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- needs review column -->
+    <div>
+      <h2 class="list-header">
+        <span class="circle pink-background"></span>
+        <a href="" class="text">Needs Review</a>
+      </h2>
+      <ul class="tasks-list pink">
+        {% for task in needs_review_tasks %}
+          <li class="task-item">
+            {% include 'includes/task_card_board.html' %}
+          </li>
+        {% empty %}
+          <li class="task-name">No tasks needs review</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- done column -->
+    <div>
+      <h2 class="list-header">
+        <span class="circle blue-background"></span>
+        <a href="" class="text">Done</a>
+      </h2>
+      <ul class="tasks-list blue">
+        {% for task in done_tasks %}
+          <li class="task-item">
+            {% include 'includes/task_card_board.html' %}
+          </li>
+        {% empty %}
+          <li class="task-name">No tasks in done</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- in progress column -->
+    <div>
+      <h2 class="list-header">
+        <span class="circle green-background"></span>
+        <a href="" class="text">In Progress</a>
+      </h2>
+      <ul class="tasks-list green">
+        {% for task in in_progress_tasks %}
+          <li class="task-item">
+            {% include 'includes/task_card_board.html' %}
+          </li>
+        {% empty %}
+          <li class="task-name">No tasks in in progress</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+<a href="" class="task-button">
+  <div>
+    <p class="task-name">{{ task.name }}</p>
+    <p class="task-name">{{ task.task_type}}</p>
+    <p class="task-due-date">Due on {{ task.deadline|date:"F j, Y" }}</p>
+  </div>
+  <!-- arrow -->
+  <iconify-icon
+    icon="material-symbols:arrow-back-ios-rounded"
+    width="18"
+    height="18"
+    class="arrow-icon"
+  ></iconify-icon>
+</a>
