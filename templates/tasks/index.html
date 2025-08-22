@@ -7,19 +7,19 @@
 {% block content %}
 <div class="row height-full">
   <!-- left side -->
-  <div class="left-column flex flex-column height-full justify-center items-center">
+  <div class="row left-column flex flex-column height-full justify-center items-center">
     <div class="index-block">
       <h1 class="welcoming-title">Welcome to TaskHub</h1>
       <h3 class="value">Manage your tasks effortlessly. Collaborate, set priorities, track deadlines — all in one place.</h3>
-      <ul class="header min-width">
-        <li class="value">🗂 User-friendly task board (To Do / In Progress / Done)</li>
-        <li class="value">🔍 Search and filter by task name and type</li>
-        <li class="value">🧠 Assign priorities and assignees</li>
-        <li class="value">📆 Deadlines and progress tracking</li>
-        <li class="value">🔐 Only authorized users have access</li>
+      <ul>
+        <li>🗂 User-friendly task board (To Do / In Progress / Done)</li>
+        <li>🔍 Search and filter by task name and type</li>
+        <li>🧠 Assign priorities and assignees</li>
+        <li>📆 Deadlines and progress tracking</li>
+        <li>🔐 Only authorized users have access</li>
       </ul>
     </div>
-    <div class="d-flex justify-content-center gap-2 mb-4 control-buttons-container">
+    <div>
       <a href="#" class="button pink-background flex justify-center items-center">go to tasks</a>
       <a href="#" class="button pink-background flex justify-center items-center">go to workers</a>
     </div>
@@ -27,7 +27,6 @@
 
   <!-- right side -->
   <div class="right-column">
-    <div class="counter-wrapper">
       <div class="counter-container">
         <a href="#">
           <div class="counter-card blue-background">
@@ -55,6 +54,5 @@
           </a>
         </div>
       </div>
-    </div>
   </div>
 {% endblock %}
