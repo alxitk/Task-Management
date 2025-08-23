@@ -195,11 +195,11 @@ select {
 /*  padding: var(--space-8);*/
 /*}*/
 
-/*.circle {*/
-/*  width: 14px;*/
-/*  height: 14px;*/
-/*  border-radius: 100%;*/
-/*}*/
+.circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 100%;
+}
 
 /*.form {*/
 /*  margin-top: var(--space-32);*/
@@ -290,9 +290,9 @@ select {
 index-block {
   display: flex;
   flex-direction: column;
-  align-items: center;      /* центр по горизонтали */
-  justify-content: center;  /* центр по вертикали */
-  min-height: 100vh;        /* растягиваем блок на всю высоту экрана */
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .index-block h1,
