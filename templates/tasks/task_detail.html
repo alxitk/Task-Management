@@ -47,7 +47,7 @@
         </button>
 
         <!-- edit task -->
-        <a href="" class="button  pink-background flex justify-center items-center">
+        <a href="{% url 'tasks:task-update' pk=task.id %}" class="button  pink-background flex justify-center items-center">
           <iconify-icon icon="material-symbols:edit-rounded" style="color: black" width="24" height="24"></iconify-icon>
         </a>
 
