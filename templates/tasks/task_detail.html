@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ task.task_type }} - TaskHub</title>
+{% endblock %}
+
+{% block content %}
+  <!-- view task overlay -->
+<div id="view-task-overlay" class="overlay view-task-overlay">
+  <div class="">
+    <div class="overlay-content blue-background">
+
+      <!-- close button -->
+      <a href="{% url 'tasks:task-list' %}"
+         class="button circle-button pink-background flex justify-center items-center close-button">
+        <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="26" height="26"></iconify-icon>
+      </a>
+
+      <!-- task name -->
+      <h1 class="header no-margin">Name</h1>
+      <p class="value">{{ task.name }}</p>
+
+      <!-- task description -->
+      <h1 class="header">Description</h1>
+      <p class="value">{{ task.description }}</p>
+
+      <!-- status display -->
+      <div class="flex items-center">
+        <h1 class="header min-width">Status</h1>
+        <p class="value status-value">
+          <span class="circle blue-background"></span>
+          <span>{{ task.get_status_display }}</span>
+        </p>
+      </div>
+
+      <!-- due date display -->
+      <div class="flex items-center">
+        <h1 class="header min-width">Due date</h1>
+        <p class="value">{{ task.deadline|date:"F j, Y" }}</p>
+      </div>
+
+      <!-- control buttons -->
+      <div class="control-buttons-container">
+        <!-- button to change status -->
+        <button id="change-status-btn" class="button pink-background flex justify-center items-center" title="Change status">
+          Change status
+        </button>
+
+        <!-- edit task -->
+        <a href="" class="button  pink-background flex justify-center items-center">
+          <iconify-icon icon="material-symbols:edit-rounded" style="color: black" width="24" height="24"></iconify-icon>
+        </a>
+
+        <!-- delete task -->
+        <a href="" class="button  pink-background flex justify-center items-center">
+          <iconify-icon icon="ic:round-delete" style="color: black" width="24" height="24"></iconify-icon>
+        </a>
+
+        <!-- manage users -->
+        <a href="" class="button circle-button pink-background flex justify-center items-center" title="Manage users">
+          <iconify-icon icon="material-symbols:group" style="color: black" width="24" height="24"></iconify-icon>
+        </a>
+
+        <!-- assign/unassign current user -->
+        <form method="post" action="">
+          {% csrf_token %}
+          {% if user in task.assignees.all %}
+            <button type="submit" class="button assign pink-background flex flex-column justify-center items-center" title="Unassign me">
+              <span>Unassign me</span>
+            </button>
+          {% else %}
+            <button type="submit" class="button assign green-background flex flex-column justify-center items-center" title="Assign me">
+              <span>Assign me</span>
+            </button>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+
+    <!-- status modal overlay -->
+    <div id="status-overlay" class="overlay" style="display: none;">
+      <div class="content-container max-width-container">
+        <div class="overlay-content green-background">
+          <!-- close button -->
+          <button class="button circle-button blue-background flex justify-center items-center close-button" id="close-status-btn">
+            <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="26" height="26"></iconify-icon>
+          </button>
+          <!-- modal title -->
+          <h1 class="header no-margin status">Change task status</h1>
+          <!-- status form -->
+          <form method="POST" action="">
+            {% csrf_token %}
+            <div>
+              <h1 class="header ">Select new status</h1>
+              <select name="status" required class="input white-background ">
+                {% for choice in task.Status.choices %}
+                  <option value="{{ choice.0 }}" {% if choice.0 == task.status %}selected{% endif %}>
+                    {{ choice.1 }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+            <!-- modal control buttons -->
+            <div class="control-buttons-container">
+              <button type="submit" class="button circle-button pink-background flex justify-center items-center">
+                <iconify-icon icon="material-symbols:check-rounded" style="color: black" width="24" height="24"></iconify-icon>
+              </button>
+              <button id="close-status-btn" type="button" class="button circle-button blue-background flex justify-center items-center">
+                <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="24" height="26"></iconify-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
