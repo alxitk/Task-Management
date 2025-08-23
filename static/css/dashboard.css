@@ -306,9 +306,9 @@
   overflow-y: auto;
 }
 
-/*.overlay.hide {*/
-/*  display: none;*/
-/*}*/
+.overlay.hide {
+  display: none;
+}
 
 .overlay-content {
   border: 2px solid var(--black);
@@ -327,10 +327,10 @@
   margin-right: -16px;
 }
 
-/*.set-task-overlay .header {*/
-/*  font-weight: 600;*/
-/*  font-size: var(--font-size-24);*/
-/*}*/
+.set-task-overlay .header {
+  font-weight: 600;
+  font-size: var(--font-size-24);
+}
 
 .view-task-overlay .header {
   font-weight: 600;
@@ -725,25 +725,25 @@
 /*  margin-top: var(--space-8);*/
 /*}*/
 
-/*.error-message {*/
-/*  color: #dc3545;*/
-/*  font-size: var(--font-size-14);*/
-/*  font-weight: 500;*/
-/*  margin: 0;*/
-/*  padding: var(--space-4) 0;*/
-/*}*/
+.error-message {
+  color: #dc3545;
+  font-size: var(--font-size-14);
+  font-weight: 500;
+  margin: 0;
+  padding: var(--space-4) 0;
+}
 
-/*.label {*/
-/*  display: block;*/
-/*  font-weight: 600;*/
-/*  font-size: var(--font-size-16);*/
-/*  margin-bottom: var(--space-8);*/
-/*  margin-top: var(--space-24);*/
-/*}*/
+.label {
+  display: block;
+  font-weight: 600;
+  font-size: var(--font-size-16);
+  margin-bottom: var(--space-8);
+  margin-top: var(--space-24);
+}
 
-/*.label:first-of-type {*/
-/*  margin-top: 0;*/
-/*}*/
+.label:first-of-type {
+  margin-top: 0;
+}
 
 .input {
   width: 100%;
@@ -755,9 +755,10 @@
   transition: border-color 0.2s ease;
 }
 
-/*.description{*/
-/*  padding-top: var(--space-16);*/
-/*}*/
+/*description in task form*/
+.description{
+  padding-top: var(--space-16);
+}
 
 .input:focus {
   outline: none;
