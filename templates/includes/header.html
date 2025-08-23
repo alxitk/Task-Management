@@ -1,0 +1,19 @@
+<div class="max-width-container">
+  <div class="header flex items-center justify-between">
+    <a href="{% url 'tasks:index' %}" class="title">
+      <h1 class="title">Taskhub</h1>
+    </a>
+    <div class="buttons-container">
+      {% if user.is_authenticated %}
+        <a href="#" class="button regular-button blue-background">Add task</a>
+        <a href="#" class="sign-out-cta">My profile</a>
+        <a href="#" id="logout-link" class="sign-out-cta">Logout</a>
+        <form id="logout-form" method="post" action="#"> {# добавить в action {% url 'logout' %} #}
+          {% csrf_token %}
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}" class="sign-out-cta">Log in</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
