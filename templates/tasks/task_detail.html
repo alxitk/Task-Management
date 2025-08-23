@@ -52,7 +52,7 @@
         </a>
 
         <!-- delete task -->
-        <a href="" class="button  pink-background flex justify-center items-center">
+        <a href="{% url 'tasks:task-delete' pk=task.id %}" class="button  pink-background flex justify-center items-center">
           <iconify-icon icon="ic:round-delete" style="color: black" width="24" height="24"></iconify-icon>
         </a>
 

@@ -1,4 +1,4 @@
-<a href="" class="task-button">
+<a href="{% url 'tasks:task-detail' pk=task.id %}" class="task-button">
   <div>
     <p class="task-name">{{ task.name }}</p>
     <p class="task-name">{{ task.task_type}}</p>
