@@ -178,9 +178,9 @@ select {
   box-shadow: var(--black-shadow);
 }
 
-/*.button.assign{*/
-/*  height: 50px;*/
-/*}*/
+.button.assign{
+  height: 50px;
+}
 
 /*.regular-button {*/
 /*  font-weight: 600;*/
@@ -188,12 +188,12 @@ select {
 /*  height: var(--input-height);*/
 /*}*/
 
-/*.circle-button {*/
-/*  width: 50px;*/
-/*  height: 50px;*/
-/*  border-radius: 100%;*/
-/*  padding: var(--space-8);*/
-/*}*/
+.circle-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  padding: var(--space-8);
+}
 
 .circle {
   width: 14px;
@@ -224,19 +224,19 @@ select {
 /*  margin-top: var(--space-16);*/
 /*}*/
 
-/*.input,*/
-/*.textarea-input{*/
-/*  border: 2px solid var(--black);*/
-/*  border-radius: var(--radius-8);*/
-/*  padding-left: var(--space-16);*/
-/*  width: 100%;*/
-/*  margin-top: var(--space-16);*/
-/*}*/
+.input,
+.textarea-input{
+  border: 2px solid var(--black);
+  border-radius: var(--radius-8);
+  padding-left: var(--space-16);
+  width: 100%;
+  margin-top: var(--space-16);
+}
 
-/*.input,*/
-/*.status-select {*/
-/*  height: var(--input-height);*/
-/*}*/
+.input,
+.status-select {
+  height: var(--input-height);
+}
 
 /*.textarea-input {*/
 /*  resize: none;*/
