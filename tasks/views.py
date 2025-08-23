@@ -63,3 +63,7 @@ class TasksListView(LoginRequiredMixin, generic.ListView):
         name = self.request.GET.get("name", "")
         context["search_form"] = TaskSearchForm(initial={"name": name})
         return context
+
+
+class TaskDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Task
