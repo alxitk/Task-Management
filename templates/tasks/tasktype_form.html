@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>
+    {% if form.instance.pk %}
+      Update Task Type - TaskHub
+    {% else %}
+      Create Task Type - TaskHub
+    {% endif %}
+  </title>
+{% endblock %}
+
+{% block content %}
+  <div class="overlay set-task-overlay">
+    <div class="content-container max-width-container">
+      <div class="overlay-content green-background">
+
+        <!-- close button -->
+        <a href="{% url 'tasks:task_types_list' %}"
+           class="button circle-button blue-background flex justify-center items-center close-button">
+          <iconify-icon icon="material-symbols:close-rounded"
+                        style="color: black"
+                        width="26" height="26"></iconify-icon>
+        </a>
+
+        <!-- dynamic header -->
+        <h1 class="header">
+          {% if form.instance.pk %}
+            Update Task Type
+          {% else %}
+            Add Task Type
+          {% endif %}
+        </h1>
+
+        <!-- task type form -->
+        <form class="form" method="post" autocomplete="off">
+          {% csrf_token %}
+
+          <!-- task type field -->
+          <label for="{{ form.name.id_for_label }}" class="label">Name</label>
+          {{ form.name }}
+          {% if form.name.errors %}
+            <div class="field-errors">
+              {% for error in form.name.errors %}
+                <p class="error-message">{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <!-- submit button -->
+          <div class="text-center">
+            <button type="submit" class="button regular-button blue-background cta-button">
+              {% if form.instance.pk %}
+                Update Task Type
+              {% else %}
+                Add Task Type
+              {% endif %}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

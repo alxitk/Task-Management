@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Task Type List | TaskHub</title>
+{% endblock %}
+
+{% block content %}
+  <div class="content-container max-width-container">
+
+    <!-- search form -->
+    <div class="search-form">
+      <form action="" method="get" class="search-container">
+        <div class="search-input-wrapper">
+          {{ search_form.name }}
+        </div>
+        <button type="submit" class="search-button">Search</button>
+
+        {% if request.GET.name %}
+          <a href="{% url 'tasks:task_types_list' %}" class="clear-search">Clear</a>
+        {% endif %}
+      </form>
+
+      {% if request.GET.name %}
+        <div class="search-results-info {% if task_type_list %}has-results{% else %}no-results{% endif %}">
+          {% if task_type_list %}
+            Found {{ task_type_list|length }} task type{{ task_type_list|length|pluralize }} for "{{ request.GET.name }}"
+          {% else %}
+            No task types found for "{{ request.GET.name }}"
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- task type table view -->
+    <div class="workers-table-view">
+      <div class="table-container">
+
+        <div class="table-header-section">
+          <h2 class="table-title">Task Type List</h2>
+          <a href="{% url 'tasks:task_type_create' %}" class="button regular-button blue-background">+ Add Task Type</a>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="workers-table">
+            <thead>
+              <tr>
+                <th class="table-header-cell">ID</th>
+                <th class="table-header-cell">Name</th>
+                <th class="table-header-cell">Tasks</th>
+                <th class="table-header-cell">Update</th>
+                <th class="table-header-cell">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for task_type in task_type_list %}
+                <tr class="worker-row">
+                  <td class="table-cell worker-id">{{ task_type.id }}</td>
+                  <td class="table-cell worker-username">
+                    {{ task_type.name }}
+                  </td>
+                  <td class="table-cell worker-first-name">
+                    <a href="">{{ task_type.tasks_count }}</a>
+                  </td>
+                  <td class="table-cell worker-last-name">
+                    <a href="{% url 'tasks:task_type_update' pk=task_type.id %}" class="worker-link">
+                      Update
+                    </a>
+                  </td>
+                  <td class="table-cell worker-position">
+                    <a href="{% url 'tasks:task_type_delete' pk=task_type.id %}" class="worker-link">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              {% empty %}
+                <tr class="empty-row">
+                  <td colspan="5" class="table-cell empty-message">
+                    {% if not request.GET.name %}
+                      No task types available
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    </div>
+  {% include 'includes/pagination.html' %}
+{% endblock %}
