@@ -57,7 +57,7 @@
         </a>
 
         <!-- manage users -->
-        <a href="" class="button circle-button pink-background flex justify-center items-center" title="Manage users">
+        <a href="{% url 'tasks:manage-task-users' pk=task.id %}" class="button circle-button pink-background flex justify-center items-center" title="Manage users">
           <iconify-icon icon="material-symbols:group" style="color: black" width="24" height="24"></iconify-icon>
         </a>
 
