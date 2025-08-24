@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% block header %}
+{% endblock %}
 {% block title %}
   <title>Welcome to TaskHub</title>
 {% endblock %}
@@ -20,33 +22,33 @@
       </ul>
     </div>
     <div>
-      <a href="#" class="button pink-background flex justify-center items-center">go to tasks</a>
-      <a href="#" class="button pink-background flex justify-center items-center">go to workers</a>
+      <a href="{% url 'tasks:task-list' %}" class="button pink-background flex justify-center items-center">go to tasks</a>
+      <a href="{% url 'tasks:worker-list' %}" class="button pink-background flex justify-center items-center">go to workers</a>
     </div>
   </div>
 
   <!-- right side -->
   <div class="right-column">
       <div class="counter-container">
-        <a href="#">
+        <a href="{% url 'tasks:worker-list' %}">
           <div class="counter-card blue-background">
             <div class="counter" data-target="{{ num_workers }}">0</div>
               <small>Workers</small>
           </div>
         </a>
-        <a href="#">
+        <a href="{% url 'tasks:task-list' %}">
           <div class="counter-card green-background">
             <div class="counter" data-target="{{ num_tasks }}">0</div>
               <small>Tasks</small>
           </div>
         </a>
-        <a href="#">
+        <a href="{% url 'tasks:task_types_list' %}">
           <div class="counter-card pink-background">
             <div class="counter" data-target="{{ num_task_types }}">0</div>
               <small>Task Types</small>
           </div>
         </a>
-        <a href="">
+        <a href="{% url 'tasks:position-list' %}">
           <div class="counter-card gray-background">
             <div class="counter" data-target="{{ num_positions }}">0</div>
               <small>Positions</small>
