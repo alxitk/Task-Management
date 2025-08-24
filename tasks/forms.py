@@ -74,3 +74,16 @@ class TaskForm(forms.ModelForm):
                 attrs={"class": "input white-background"}
             ),
         }
+
+
+class WorkerSearchForm(forms.Form):
+    username = forms.CharField(
+        label="",
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search worker by username...",
+                "class": "search-input",
+            }
+        ),
+    )
