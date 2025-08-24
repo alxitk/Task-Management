@@ -1,11 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
-from tasks.forms import TaskSearchForm, TaskForm, WorkerSearchForm, WorkerCreateForm, WorkerUpdateForm
+from tasks.forms import TaskSearchForm, TaskForm, WorkerSearchForm, WorkerCreateForm, WorkerUpdateForm, \
+    PositionSearchForm
 from tasks.models import Worker, Task, TaskType, Position
 
 
@@ -146,3 +148,26 @@ def toggle_assign_to_task(request, pk):
     else:
         task.assignees.add(user)
     return HttpResponseRedirect(reverse_lazy("tasks:task-detail", args=[pk]))
+
+
+class PositionListView(LoginRequiredMixin, generic.ListView):
+    model = Position
+    context_object_name = "position_list"
+    template_name = "tasks/position_list.html"
+    paginate_by = 5
+    queryset = Position.objects.all()
+
+    def get_context_data(self, *, object_list=..., **kwargs):
+        context = super(PositionListView, self).get_context_data(**kwargs)
+        position = self.request.GET.get("position", "")
+        context["search_form"] = PositionSearchForm(
+            initial={"position": position}
+        )
+        return context
+
+    def get_queryset(self):
+        position = self.request.GET.get("position", "")
+        queryset = Position.objects.annotate(worker_count=Count("worker"))
+        if position:
+            queryset = queryset.filter(position__icontains=position)
+        return queryset

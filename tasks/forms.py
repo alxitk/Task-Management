@@ -151,3 +151,16 @@ class WorkerUpdateForm(forms.ModelForm):
             ),
             "position": forms.Select(attrs={"class": "input white-background"}),
         }
+
+
+class PositionSearchForm(forms.Form):
+    position = forms.CharField(
+        label="",
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search position...",
+                "class": "search-input",
+            }
+        ),
+    )
