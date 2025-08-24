@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Delete Position | TaskHub</title>
+{% endblock %}
+
+{% block content %}
+  <!-- delete position overlay -->
+  <div id="delete-worker-overlay" class="overlay set-task-overlay">
+    <div class="content-container max-width-container">
+      <div class="overlay-content green-background">
+        <!-- close button -->
+        <a href="{% url 'tasks:position-list' %}"
+           class="button circle-button pink-background flex justify-center items-center close-button">
+          <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="26" height="26"></iconify-icon>
+        </a>
+
+        <h1 class="header">Delete Position?</h1>
+
+        <div class="tasks-list-wrapper">
+          <div class="list-header">
+            <span class="circle pink-background"></span>
+            <p>Are you sure you want to delete Position: <strong>{{ position.position }}</strong>?</p>
+          </div>
+        </div>
+
+        <p>This action <strong>cannot be undone</strong>.</p>
+
+        <form method="post" class="form">
+          {% csrf_token %}
+          <div class="control-buttons-container">
+            <button type="submit" class="button regular-button blue-background cta-button">
+              <iconify-icon icon="ic:round-delete" style="color: black" width="20" height="20"></iconify-icon>
+              Yes, Delete
+            </button>
+            <a href="{% url 'tasks:position-list' %}" class="button regular-button pink-background cta-button">
+              <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="20" height="20"></iconify-icon>
+              Cancel
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

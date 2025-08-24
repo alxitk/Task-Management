@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 
-from tasks.models import Task, Worker
+from tasks.models import Task, Worker, Position
 
 
 class TaskSearchForm(forms.Form):
@@ -164,3 +164,13 @@ class PositionSearchForm(forms.Form):
             }
         ),
     )
+
+
+class PositionForm(forms.ModelForm):
+    class Meta:
+        model = Position
+        fields = "__all__"
+        widgets = {
+            "position": forms.TextInput(attrs={"class": "input white-background",
+                                               "placeholder": "Enter position..."}),
+        }

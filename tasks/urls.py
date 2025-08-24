@@ -2,7 +2,7 @@ from django.urls import path
 
 from tasks.views import index, TasksListView, TaskDetailView, TaskCreateView, TaskUpdateView, TaskDeleteView, \
     WorkerListView, WorkerCreateView, WorkerUpdateView, WorkerDeleteView, WorkerDetailView, toggle_assign_to_task, \
-    PositionListView
+    PositionListView, PositionCreateView, PositionUpdateView, PositionDeleteView
 
 app_name = "tasks"
 
@@ -40,4 +40,19 @@ urlpatterns = [
         name="toggle-task-assign",
     ),
     path("positions/", PositionListView.as_view(), name="position-list"),
+    path(
+        "positions/create/",
+        PositionCreateView.as_view(),
+        name="position-create",
+    ),
+    path(
+        "positions/<int:pk>/update/",
+        PositionUpdateView.as_view(),
+        name="position-update",
+    ),
+    path(
+        "positions/<int:pk>/delete/",
+        PositionDeleteView.as_view(),
+        name="position-delete",
+    ),
     ]

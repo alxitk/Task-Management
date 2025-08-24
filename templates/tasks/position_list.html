@@ -32,12 +32,12 @@
 </div>
 
     <!-- position table view -->
-    <div id="workers-table-view" class="workers-table-view">
+    <div class="workers-table-view">
       <div class="table-container">
 
         <div class="table-header-section">
           <h2 class="table-title">Position List</h2>
-          <a href="" class="button regular-button blue-background">+ Add Position</a>
+          <a href="{% url 'tasks:position-create' %}" class="button regular-button blue-background">+ Add Position</a>
         </div>
 
         <div class="table-wrapper">
@@ -64,12 +64,12 @@
                     <a href="">{{ position.worker_count }}</a>
                   </td>
                   <td class="table-cell worker-last-name">
-                    <a href="" class="worker-link">
+                    <a href="{% url 'tasks:position-update' pk=position.id %}" class="worker-link">
                       Update
                     </a>
                   </td>
                   <td class="table-cell worker-position">
-                    <a href="" class="worker-link">
+                    <a href="{% url 'tasks:position-delete' pk=position.id %}" class="worker-link">
                       Delete
                     </a>
                   </td>

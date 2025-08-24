@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from tasks.forms import TaskSearchForm, TaskForm, WorkerSearchForm, WorkerCreateForm, WorkerUpdateForm, \
-    PositionSearchForm
+    PositionSearchForm, PositionForm
 from tasks.models import Worker, Task, TaskType, Position
 
 
@@ -171,3 +171,20 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
         if position:
             queryset = queryset.filter(position__icontains=position)
         return queryset
+
+
+class PositionCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Position
+    form_class = PositionForm
+    success_url = reverse_lazy("tasks:position-list")
+
+
+class PositionUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Position
+    form_class = PositionForm
+    success_url = reverse_lazy("tasks:position-list")
+
+
+class PositionDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Position
+    success_url = reverse_lazy("tasks:position-list")
