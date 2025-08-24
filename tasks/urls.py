@@ -3,7 +3,7 @@ from django.urls import path
 from tasks.views import index, TasksListView, TaskDetailView, TaskCreateView, TaskUpdateView, TaskDeleteView, \
     WorkerListView, WorkerCreateView, WorkerUpdateView, WorkerDeleteView, WorkerDetailView, toggle_assign_to_task, \
     PositionListView, PositionCreateView, PositionUpdateView, PositionDeleteView, TaskTypesListView, TaskTypeCreateView, \
-    TaskTypeUpdateView, TaskTypeDeleteView, CustomLoginView, set_task_status
+    TaskTypeUpdateView, TaskTypeDeleteView, CustomLoginView, set_task_status, manage_task_users
 
 app_name = "tasks"
 
@@ -78,4 +78,9 @@ urlpatterns = [
     ),
     path('accounts/login/', CustomLoginView.as_view(), name='login'),
     path("task/<int:pk>/set-status/", set_task_status, name="set-status"),
+    path(
+        "tasks/<int:pk>/manage-users/",
+        manage_task_users,
+        name="manage-task-users"
+    ),
     ]

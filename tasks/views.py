@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from tasks.forms import TaskSearchForm, TaskForm, WorkerSearchForm, WorkerCreateForm, WorkerUpdateForm, \
-    PositionSearchForm, PositionForm, TaskTypeForm, TaskTypeSearchForm, CustomAuthenticationForm
+    PositionSearchForm, PositionForm, TaskTypeForm, TaskTypeSearchForm, CustomAuthenticationForm, AssignUserForm
 from tasks.models import Worker, Task, TaskType, Position
 
 
@@ -162,6 +162,24 @@ def toggle_assign_to_task(request, pk):
     else:
         task.assignees.add(user)
     return HttpResponseRedirect(reverse_lazy("tasks:task-detail", args=[pk]))
+
+
+def manage_task_users(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+
+    if request.method == "POST":
+        form = AssignUserForm(request.POST)
+        if form.is_valid():
+            selected_users = form.cleaned_data["users"]
+
+            task.assignees.set(selected_users)
+            return redirect("tasks:task-detail", pk=pk)
+    else:
+        form = AssignUserForm(initial={"users": task.assignees.all()})
+
+    return render(
+        request, "tasks/manage_users_for_task.html", {"task": task, "form": form}
+    )
 
 
 class PositionListView(LoginRequiredMixin, generic.ListView):
