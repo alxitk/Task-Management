@@ -131,3 +131,7 @@ class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
 class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Worker
     success_url = reverse_lazy("tasks:worker-list")
+
+
+class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
+    queryset = Worker.objects.all().prefetch_related("tasks__assignees")

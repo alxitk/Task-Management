@@ -1,7 +1,7 @@
 from django.urls import path
 
 from tasks.views import index, TasksListView, TaskDetailView, TaskCreateView, TaskUpdateView, TaskDeleteView, \
-    WorkerListView, WorkerCreateView, WorkerUpdateView, WorkerDeleteView
+    WorkerListView, WorkerCreateView, WorkerUpdateView, WorkerDeleteView, WorkerDetailView
 
 app_name = "tasks"
 
@@ -32,4 +32,5 @@ urlpatterns = [
         WorkerDeleteView.as_view(),
         name="worker-delete"
     ),
+    path("worker/<int:pk>/", WorkerDetailView.as_view(), name="worker-detail"),
     ]
