@@ -62,7 +62,7 @@
         </a>
 
         <!-- assign/unassign current user -->
-        <form method="post" action="">
+        <form method="post" action="{% url 'tasks:toggle-task-assign' pk=task.id %}">
           {% csrf_token %}
           {% if user in task.assignees.all %}
             <button type="submit" class="button assign pink-background flex flex-column justify-center items-center" title="Unassign me">

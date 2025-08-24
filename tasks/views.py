@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -135,3 +136,13 @@ class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
     queryset = Worker.objects.all().prefetch_related("tasks__assignees")
+
+
+def toggle_assign_to_task(request, pk):
+    task = get_object_or_404(Task, id=pk)
+    user = request.user
+    if user in task.assignees.all():
+        task.assignees.remove(user)
+    else:
+        task.assignees.add(user)
+    return HttpResponseRedirect(reverse_lazy("tasks:task-detail", args=[pk]))
