@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from tasks.models import Task, Worker, Position, TaskType
 
@@ -196,4 +196,13 @@ class TaskTypeSearchForm(forms.Form):
                 "class": "search-input",
             }
         ),
+    )
+
+
+class CustomAuthenticationForm(AuthenticationForm):
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'input',})
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'input',})
     )

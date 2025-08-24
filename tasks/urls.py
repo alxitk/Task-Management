@@ -3,7 +3,7 @@ from django.urls import path
 from tasks.views import index, TasksListView, TaskDetailView, TaskCreateView, TaskUpdateView, TaskDeleteView, \
     WorkerListView, WorkerCreateView, WorkerUpdateView, WorkerDeleteView, WorkerDetailView, toggle_assign_to_task, \
     PositionListView, PositionCreateView, PositionUpdateView, PositionDeleteView, TaskTypesListView, TaskTypeCreateView, \
-    TaskTypeUpdateView, TaskTypeDeleteView
+    TaskTypeUpdateView, TaskTypeDeleteView, CustomLoginView
 
 app_name = "tasks"
 
@@ -76,4 +76,5 @@ urlpatterns = [
         TaskTypeDeleteView.as_view(),
         name="task_type_delete",
     ),
+    path('accounts/login/', CustomLoginView.as_view(), name='login'),
     ]

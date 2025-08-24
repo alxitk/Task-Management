@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
 from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -7,7 +8,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from tasks.forms import TaskSearchForm, TaskForm, WorkerSearchForm, WorkerCreateForm, WorkerUpdateForm, \
-    PositionSearchForm, PositionForm, TaskTypeForm, TaskTypeSearchForm
+    PositionSearchForm, PositionForm, TaskTypeForm, TaskTypeSearchForm, CustomAuthenticationForm
 from tasks.models import Worker, Task, TaskType, Position
 
 
@@ -33,6 +34,9 @@ def index(request):
 
     return render(request, "tasks/index.html", context=context)
 
+
+class CustomLoginView(LoginView):
+    authentication_form = CustomAuthenticationForm
 
 class TasksListView(LoginRequiredMixin, generic.ListView):
     model = Task
