@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ worker.username }} - TaskHub</title>
+{% endblock %}
+
+{% block content %}
+  <!-- view worker overlay -->
+<div class="overlay view-task-overlay">
+  <div class="content-container max-width-container">
+    <div class="overlay-content blue-background">
+      <!-- close button -->
+      <a href="{{ request.META.HTTP_REFERER|default:'/' }}"
+         class="button circle-button pink-background flex justify-center items-center close-button">
+        <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="26" height="26"></iconify-icon>
+      </a>
+
+      <h1 class="header no-margin">Username</h1>
+      <p class="value">
+        {{ worker.username }}
+        {% if user == worker %}
+          <span class="current-user-badge">(You)</span>
+        {% endif %}
+      </p>
+
+      <h1 class="header">Full Name</h1>
+      <p class="value">{{ worker.first_name }} {{ worker.last_name }}</p>
+
+      <div class="flex items-center">
+        <h1 class="header min-width">Position</h1>
+        <p class="value status-value">
+          <span class="circle blue-background"></span>
+          <span>{{ worker.position }}</span>
+        </p>
+      </div>
+
+      <div class="flex items-center">
+        <h1 class="header min-width">Email</h1>
+        <p class="value">{{ worker.email|default:"Not specified" }}</p>
+      </div>
+
+      <div class="flex items-center">
+        <h1 class="header min-width">ID</h1>
+        <p class="value">{{ worker.id }}</p>
+      </div>
+
+      {% if user == worker or user.is_staff %}
+      <div class="control-buttons-container">
+        <a href="{% url 'tasks:worker-update' pk=worker.id %}" class="button circle-button pink-background flex justify-center items-center">
+          <iconify-icon icon="material-symbols:edit-rounded" style="color: black" width="24" height="24"></iconify-icon>
+        </a>
+        {% if user.is_staff and user != worker %}
+        <a href="{% url 'tasks:worker-delete' pk=worker.id %}" class="button circle-button pink-background flex justify-center items-center">
+          <iconify-icon icon="ic:round-delete" style="color: black" width="24" height="24"></iconify-icon>
+        </a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- worker tasks section -->
+    <div class="worker-tasks-section">
+      <div class="tasks-grid">
+
+        <!-- incomplete tasks -->
+        <div class="tasks-container incomplete-tasks">
+          <div class="tasks-header">
+            <h2 class="list-header">
+              <span class="circle yellow-background"></span>
+              <span class="text">Incomplete Tasks</span>
+            </h2>
+          </div>
+          <div class="tasks-list-wrapper">
+            {% for task in worker.tasks.all %}
+              {% if task.status != "done" %}
+                <div class="task-item-detail">
+                  <a href="{% url 'tasks:task-detail' task.id %}" class="task-link">
+                    <h3 class="task-name">{{ task.name }}</h3>
+                    <div class="task-info">
+                      <p class="task-meta"><strong>Deadline:</strong> {{ task.deadline|date:"F j, Y" }}</p>
+                      <p class="task-meta"><strong>Priority:</strong> {{ task.priority }}</p>
+                      <p class="task-meta"><strong>Status:</strong> {{ task.get_status_display }}</p>
+                      <p class="task-id"><strong>ID:</strong> {{ task.id }}</p>
+                    </div>
+                    <div class="task-arrow">
+                      <iconify-icon
+                        icon="material-symbols:arrow-back-ios-rounded"
+                        style="color: black"
+                        width="18"
+                        height="18"
+                        class="arrow-icon"
+                      ></iconify-icon>
+                    </div>
+                  </a>
+                </div>
+              {% endif %}
+            {% empty %}
+              <p class="no-tasks-message">No incomplete tasks.</p>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- completed tasks -->
+        <div class="tasks-container completed-tasks">
+          <div class="tasks-header">
+            <h2 class="list-header">
+              <span class="circle green-background"></span>
+              <span class="text">Completed Tasks</span>
+            </h2>
+          </div>
+          <div class="tasks-list-wrapper">
+            {% for task in worker.tasks.all %}
+              {% if task.status == "done" %}
+                <div class="task-item-detail">
+                  <a href="{% url 'tasks:task-detail' task.id %}" class="task-link">
+                    <h3 class="task-name">{{ task.name }}</h3>
+                    <div class="task-info">
+                      <p class="task-meta"><strong>Deadline:</strong> {{ task.deadline|date:"F j, Y" }}</p>
+                      <p class="task-meta"><strong>Priority:</strong> {{ task.priority }}</p>
+                      <p class="task-meta"><strong>Status:</strong> {{ task.get_status_display }}</p>
+                      <p class="task-id"><strong>ID:</strong> {{ task.id }}</p>
+                    </div>
+                    <div class="task-arrow">
+                      <iconify-icon
+                        icon="material-symbols:arrow-back-ios-rounded"
+                        style="color: black"
+                        width="18"
+                        height="18"
+                        class="arrow-icon"
+                      ></iconify-icon>
+                    </div>
+                  </a>
+                </div>
+              {% endif %}
+            {% empty %}
+              <p class="no-tasks-message">No completed tasks.</p>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

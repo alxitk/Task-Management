@@ -59,7 +59,7 @@
                 </td>
 
                 <td class="table-cell worker-username header">
-                  <a href="" class="sign-out-cta">
+                  <a href="{% url 'tasks:worker-detail' pk=worker.id %}" class="sign-out-cta">
                     <span>{{ worker.username }}</span>
                     {% if user == worker %}
                       <span class="current-user-badge">(Me)</span>

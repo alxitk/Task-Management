@@ -564,70 +564,70 @@
 /*  font-weight: 500;*/
 /*}*/
 
-/*!* Worker Tasks Section *!*/
-/*.worker-tasks-section {*/
-/*  margin-top: var(--space-48);*/
-/*  width: 100%;*/
-/*}*/
+/* worker Tasks Section */
+.worker-tasks-section {
+  margin-top: var(--space-48);
+  width: 100%;
+}
 
-/*.tasks-grid {*/
-/*  display: grid;*/
-/*  grid-template-columns: 1fr 1fr;*/
-/*  gap: var(--space-32);*/
-/*}*/
+.tasks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-32);
+}
 
-/*.tasks-container {*/
-/*  background-color: var(--white);*/
-/*  border: 2px solid var(--black);*/
-/*  border-radius: var(--radius-8);*/
-/*}*/
+.tasks-container {
+  background-color: var(--white);
+  border: 2px solid var(--black);
+  border-radius: var(--radius-8);
+}
 
-/*.incomplete-tasks {*/
-/*  box-shadow: var(--pink-shadow);*/
-/*}*/
+.incomplete-tasks {
+  box-shadow: var(--pink-shadow);
+}
 
-/*.completed-tasks {*/
-/*  box-shadow: var(--green-shadow);*/
-/*}*/
+.completed-tasks {
+  box-shadow: var(--green-shadow);
+}
 
-/*.tasks-header {*/
-/*  padding: var(--space-16);*/
-/*  border-bottom: 2px solid var(--black);*/
-/*}*/
+.tasks-header {
+  padding: var(--space-16);
+  border-bottom: 2px solid var(--black);
+}
 
 .tasks-list-wrapper {
   padding: var(--space-24) var(--space-16);
 }
 
-/*.task-item-detail {*/
-/*  margin-bottom: var(--space-24);*/
-/*  padding-bottom: var(--space-16);*/
-/*  border-bottom: 1px solid var(--dark-gray);*/
-/*  transition: transform 0.2s ease, border 0.2s ease;*/
-/*}*/
+.task-item-detail {
+  margin-bottom: var(--space-24);
+  padding-bottom: var(--space-16);
+  border-bottom: 1px solid var(--dark-gray);
+  transition: transform 0.2s ease, border 0.2s ease;
+}
 
-/*.task-item-detail:last-child {*/
-/*  margin-bottom: 0;*/
-/*  border-bottom: none;*/
-/*  padding-bottom: 0;*/
-/*}*/
+.task-item-detail:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
 
-/*.task-item-detail:hover {*/
-/*  transform: translateY(-2px);*/
-/*}*/
+.task-item-detail:hover {
+  transform: translateY(-2px);
+}
 
-/*.task-link {*/
-/*  display: flex;*/
-/*  align-items: flex-start;*/
-/*  gap: var(--space-16);*/
-/*  color: inherit;*/
-/*  text-decoration: none;*/
-/*}*/
+.task-link {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+  color: inherit;
+  text-decoration: none;
+}
 
-/*.task-link:hover {*/
-/*  color: inherit;*/
-/*  text-decoration: none;*/
-/*}*/
+.task-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
 
 .task-name {
   font-weight: 600;
@@ -637,9 +637,9 @@
   flex: 1;
 }
 
-/*.task-info {*/
-/*  flex: 2;*/
-/*}*/
+.task-info {
+  flex: 2;
+}
 
 .task-meta {
   font-size: var(--font-size-14);
@@ -658,55 +658,55 @@
   margin-bottom: 0;
 }
 
-/*.task-arrow {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  min-width: 30px;*/
-/*}*/
+.task-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+}
 
 .task-arrow .arrow-icon {
   transform: rotate(180deg);
   transition: transform 0.2s ease;
 }
 
-/*.task-item-detail:hover .arrow-icon {*/
-/*  transform: rotate(180deg) scale(1.1);*/
-/*}*/
+.task-item-detail:hover .arrow-icon {
+  transform: rotate(180deg) scale(1.1);
+}
 
-/*.no-tasks-message {*/
-/*  color: var(--dark-gray);*/
-/*  font-style: italic;*/
-/*  text-align: center;*/
-/*  padding: var(--space-32);*/
-/*}*/
+.no-tasks-message {
+  color: var(--dark-gray);
+  font-style: italic;
+  text-align: center;
+  padding: var(--space-32);
+}
 
-/*!* Responsive design for tasks *!*/
-/*@media (max-width: 900px) {*/
-/*  .tasks-grid {*/
-/*    grid-template-columns: 1fr;*/
-/*    gap: var(--space-24);*/
-/*  }*/
+/*!* responsive design for tasks *!*/
+@media (max-width: 900px) {
+  .tasks-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+  }
 
-/*  .worker-tasks-section {*/
-/*    margin-top: var(--space-32);*/
-/*  }*/
-/*}*/
+  .worker-tasks-section {
+    margin-top: var(--space-32);
+  }
+}
 
-/*@media (max-width: 600px) {*/
-/*  .task-link {*/
-/*    flex-direction: column;*/
-/*    gap: var(--space-8);*/
-/*  }*/
+@media (max-width: 600px) {
+  .task-link {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
 
-/*  .task-info {*/
-/*    flex: none;*/
-/*  }*/
+  .task-info {
+    flex: none;
+  }
 
-/*  .task-arrow {*/
-/*    align-self: flex-end;*/
-/*  }*/
-/*}*/
+  .task-arrow {
+    align-self: flex-end;
+  }
+}
 
 /*!* Additional styles for worker form *!*/
 /*.field-errors {*/
