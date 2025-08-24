@@ -641,22 +641,22 @@
 /*  flex: 2;*/
 /*}*/
 
-/*.task-meta {*/
-/*  font-size: var(--font-size-14);*/
-/*  margin-bottom: var(--space-4);*/
-/*  color: var(--dark-gray);*/
-/*}*/
+.task-meta {
+  font-size: var(--font-size-14);
+  margin-bottom: var(--space-4);
+  color: var(--dark-gray);
+}
 
-/*.task-meta strong {*/
-/*  color: var(--black);*/
-/*}*/
+.task-meta strong {
+  color: var(--black);
+}
 
-/*.task-id {*/
-/*  font-size: var(--font-size-14);*/
-/*  color: var(--dark-gray);*/
-/*  margin-top: var(--space-8);*/
-/*  margin-bottom: 0;*/
-/*}*/
+.task-id {
+  font-size: var(--font-size-14);
+  color: var(--dark-gray);
+  margin-top: var(--space-8);
+  margin-bottom: 0;
+}
 
 /*.task-arrow {*/
 /*  display: flex;*/
