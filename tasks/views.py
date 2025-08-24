@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.db.models import Count
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -93,6 +93,16 @@ class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Task
     success_url = reverse_lazy("tasks:task-list")
 
+
+def set_task_status(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    new_status = request.POST.get("status")
+
+    if new_status in Task.Status.values:
+        task.status = new_status
+        task.save()
+
+    return redirect("tasks:task-detail", pk=task.pk)
 
 
 class WorkerListView(LoginRequiredMixin, generic.ListView):

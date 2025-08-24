@@ -88,7 +88,7 @@
           <!-- modal title -->
           <h1 class="header no-margin status">Change task status</h1>
           <!-- status form -->
-          <form method="POST" action="">
+          <form method="POST" action="{% url 'tasks:set-status' pk=task.id %}">
             {% csrf_token %}
             <div>
               <h1 class="header ">Select new status</h1>
