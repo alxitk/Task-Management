@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block header %}
+{% endblock %}
+{% block content %}
+<div class="row height-full">
+  <!-- left side -->
+  <div class="left-column flex flex-column height-full justify-center items-center">
+    <h1 class="welcoming-title">Welcome</h1>
+
+    {% if form.errors %}
+      <div>
+      Your username and password didn’t match. Please try again.
+      </div>
+    {% endif %}
+
+    {% if next %}
+      <p>Please log in to see this page.</p>
+    {% endif %}
+
+    <form class="form" autocomplete="off" method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <label for="{{ form.username.id_for_label }}" class="label">Username</label>
+      {{ form.username }}
+      <label for="{{ form.password.id_for_label }}" class="label">Password</label>
+      {{ form.password }}
+
+      <input type="hidden" name="next" value="{{ next }}">
+
+      <button type="submit" class="button login regular-button pink-background cta-btn">
+        Log in
+      </button>
+    </form>
+  </div>
+
+    <!-- right side -->
+    <div class="right-column"></div>
+    </div>
+{% endblock %}

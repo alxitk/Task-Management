@@ -205,17 +205,17 @@ select {
   margin-top: var(--space-32);
 }
 
-/*.label {*/
-/*  font-weight: 600;*/
-/*  font-size: var(--font-size-16);*/
-/*  !* to apply margins for inline labels *!*/
-/*  display: inline-block;*/
-/*  margin-top: var(--space-16);*/
-/*}*/
+.label {
+  font-weight: 600;
+  font-size: var(--font-size-16);
+  /* to apply margins for inline labels */
+  display: inline-block;
+  margin-top: var(--space-16);
+}
 
-/*.label:first-child {*/
-/*  margin-top: 0;*/
-/*}*/
+.label:first-child {
+  margin-top: 0;
+}
 
 /*.secondary-label {*/
 /*  display: block;*/

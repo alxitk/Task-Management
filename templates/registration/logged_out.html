@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+      {% block header %}
+      {% endblock %}
+      <!-- content -->
+      {% block content %}
+         <div class="row height-full">
+    <!-- left side -->
+    <div class="left-column flex flex-column height-full justify-center items-center">
+
+      <h1 class="welcoming-title">You have been logged out</h1>
+
+      <input type="hidden" name="next" value="{{ next }}">
+      <div class="form">
+        <p class="mb-3 text-muted">We hope to see you back soon.</p>
+        <a href="{% url 'login' %}" class="button regular-button pink-background cta-btn">
+          Log in
+        </a>
+      </div>
+    </div>
+
+    <!-- right side -->
+    <div class="right-column"></div>
+    </div>
+      {% endblock %}
+
+
+
+
+
+
+
