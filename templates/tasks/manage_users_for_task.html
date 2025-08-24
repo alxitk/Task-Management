@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Manage Users for {{ task.name }} | TaskHub</title>
+{% endblock %}
+
+{% block content %}
+  <div class="max-width-container">
+    <div class="page-container">
+      <div class="task-form-container">
+        <h2 class="form-title">
+          Manage Users for: <span class="task-name-highlight">"{{ task.name }}"</span> task
+        </h2>
+
+        <!-- stats section -->
+        <div class="stats-container">
+          <div class="stat-card total">
+            <div class="stat-number" id="total-users">0</div>
+            <div class="stat-label">Total Users</div>
+          </div>
+          <div class="stat-card selected">
+            <div class="stat-number" id="selected-users">0</div>
+            <div class="stat-label">Selected</div>
+          </div>
+        </div>
+
+        <form method="post" class="form" novalidate>
+          {% csrf_token %}
+
+          <!-- user selection grid -->
+          <div class="user-grid" id="user-grid">
+            {{ form.as_p }}
+          </div>
+
+          <!-- selected users summary -->
+          <div class="selected-summary" id="selected-summary">
+            <h3 class="label">Selected Users:</h3>
+            <div class="selected-users-list" id="selected-users-list">
+              <!-- selected users will appear here -->
+            </div>
+          </div>
+
+          <!-- buttons -->
+          <div class="button-container">
+            <a href="{% url 'tasks:task-detail' pk=task.id %}" class="button pink-background regular-button">
+              Back to Task
+            </a>
+            <button type="submit" class="button green-background regular-button">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
