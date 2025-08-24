@@ -131,3 +131,23 @@ class WorkerCreateForm(UserCreationForm):
             ),
             "position": forms.Select(attrs={"class": "input white-background"}),
         }
+
+
+class WorkerUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Worker
+        fields = ("username", "first_name", "last_name", "position")
+        widgets = {
+            "username": forms.TextInput(
+                attrs={"class": "input white-background", "placeholder": "Username"}
+            ),
+            "first_name": forms.TextInput(
+                attrs={"class": "input white-background",
+                       "placeholder": "First Name"}
+            ),
+            "last_name": forms.TextInput(
+                attrs={"class": "input white-background",
+                       "placeholder": "Last Name"}
+            ),
+            "position": forms.Select(attrs={"class": "input white-background"}),
+        }
