@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 
-from tasks.models import Task
+from tasks.models import Task, Worker
 
 
 class TaskSearchForm(forms.Form):
@@ -87,3 +88,46 @@ class WorkerSearchForm(forms.Form):
             }
         ),
     )
+
+
+class WorkerCreateForm(UserCreationForm):
+    password1 = forms.CharField(
+        label="Password",
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={"class": "input white-background", "placeholder": "Password"}
+        ),
+    )
+    password2 = forms.CharField(
+        label="Confirm Password",
+        widget=forms.PasswordInput(
+            attrs={"class": "input white-background",
+                   "placeholder": "Confirm Password"}
+        ),
+        strip=False,
+    )
+
+    class Meta:
+        model = Worker
+        fields = (
+            "username",
+            "first_name",
+            "last_name",
+            "position",
+            "password1",
+            "password2",
+        )
+        widgets = {
+            "username": forms.TextInput(
+                attrs={"class": "input white-background", "placeholder": "Username"}
+            ),
+            "first_name": forms.TextInput(
+                attrs={"class": "input white-background",
+                       "placeholder": "First Name"}
+            ),
+            "last_name": forms.TextInput(
+                attrs={"class": "input white-background",
+                       "placeholder": "Last Name"}
+            ),
+            "position": forms.Select(attrs={"class": "input white-background"}),
+        }
