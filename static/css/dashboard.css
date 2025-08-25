@@ -1,8 +1,3 @@
-/*body.overflow-hidden {*/
-/*  !* disable scrolling only when overlay is open *!*/
-/*  overflow: hidden;*/
-/*}*/
-
 .content-container {
   padding-block: var(--space-32);
 }
@@ -59,50 +54,6 @@
     font-size: 14px;
   }
 }
-
-/*!* radio buttons for view options *!*/
-/*.radio-buttons-container {*/
-/*  border-top: 2px solid var(--black);*/
-/*  border-bottom: 2px solid var(--black);*/
-/*  margin-top: var(--space-32);*/
-/*}*/
-
-/*.radio-container {*/
-/*  width: 100px;*/
-/*  border-left: 2px solid var(--black);*/
-/*}*/
-
-/*.radio-container:last-child {*/
-/*  border-right: 2px solid var(--black);*/
-/*}*/
-
-/*.radio-buttons-container .radio-label {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  gap: var(--space-4);*/
-/*  font-weight: 500;*/
-/*  font-size: var(--font-size-14);*/
-/*  padding-block: var(--space-16);*/
-/*  cursor: pointer;*/
-/*}*/
-
-/*.radio-input {*/
-/*  !* hide *!*/
-/*  appearance: none;*/
-/*  !* remove from document flow *!*/
-/*  position: absolute;*/
-/*}*/
-
-/*!* direct sibling *!*/
-/*.radio-buttons-container .radio-input:checked + .radio-label {*/
-/*  background-color: var(--pink);*/
-/*}*/
-
-/*!* lists view *!*/
-/*.list-view.hide {*/
-/*  display: none;*/
-/*}*/
 
 .list-view .list-container {
   margin-top: var(--space-32);
@@ -162,11 +113,6 @@
   margin-top: var(--space-24);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
-
-/*.list-view .task-item:hover {*/
-/*  transform: translateY(-2px);*/
-/*  cursor: pointer;*/
-/*}*/
 
 .list-view .task-item:first-child {
   margin-top: 0;
@@ -253,11 +199,11 @@
   display: none;
 }
 
-/*!* hide scrollbars without impacting scrolling *!*/
-/*!* Chrome, Safari, Opera, and other WebKit-based browsers *!*/
-/*.board-view::-webkit-scrollbar {*/
-/*  display: none;*/
-/*}*/
+/* hide scrollbars without impacting scrolling */
+/* Chrome, Safari, Opera, and other WebKit-based browsers */
+.board-view::-webkit-scrollbar {
+  display: none;
+}
 
 .board-view .task-item {
   margin-top: var(--space-16);
@@ -442,17 +388,6 @@
   border-bottom: 2px solid var(--black);
 }
 
-/*.w {*/
-/*  transition: border 0.2s ease, transform 0.2s ease;*/
-/*  border: 2px solid transparent;*/
-/*  margin-bottom: var(--space-16);*/
-/*}*/
-
-/*.w:hover {*/
-/*  border: 2px solid var(--black);*/
-/*  transform: translateY(-1px);*/
-/*}*/
-
 .worker-row:last-child {
   margin-bottom: 0;
 }
@@ -485,29 +420,6 @@
 .worker-position {
   color: var(--dark-gray);
 }
-
-/*.worker-actions {*/
-/*  width: 60px;*/
-/*  text-align: center;*/
-/*}*/
-
-/*.action-link {*/
-/*  display: inline-flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  padding: var(--space-8);*/
-/*  border-radius: var(--radius-8);*/
-/*  transition: background-color 0.2s ease, transform 0.2s ease;*/
-/*}*/
-
-/*.action-link:hover {*/
-/*  background-color: var(--blue);*/
-/*  transform: scale(1.1);*/
-/*}*/
-
-/*.action-link .arrow-icon {*/
-/*  transform: rotate(180deg);*/
-/*}*/
 
 .empty-row .empty-message {
   text-align: center;
@@ -555,20 +467,6 @@
     flex-direction: column;
   }
 }
-
-/*!* Additional styles for worker detail *!*/
-
-/*.worker-position-value {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  gap: var(--space-8);*/
-/*  background-color: var(--white);*/
-/*  border: 2px solid var(--black);*/
-/*  border-radius: var(--radius-8);*/
-/*  padding: var(--space-8) var(--space-16);*/
-/*  height: var(--input-height);*/
-/*  font-weight: 500;*/
-/*}*/
 
 /* worker Tasks Section */
 .worker-tasks-section {
@@ -714,10 +612,10 @@
   }
 }
 
-/*!* Additional styles for worker form *!*/
-/*.field-errors {*/
-/*  margin-top: var(--space-8);*/
-/*}*/
+/* Additional styles for worker form */
+.field-errors {
+  margin-top: var(--space-8);
+}
 
 .error-message {
   color: #dc3545;
@@ -759,61 +657,6 @@
   border-color: var(--blue);
   box-shadow: 0 0 0 3px rgba(var(--blue), 0.1);
 }
-
-/*.radio-label {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  gap: var(--space-8);*/
-/*  padding: var(--space-8) var(--space-16);*/
-/*  cursor: pointer;*/
-/*  transition: background-color 0.2s ease;*/
-/*}*/
-
-/*.radio-label:hover {*/
-/*  background-color: var(--beige);*/
-/*}*/
-
-/*.radio-input:checked + .radio-label {*/
-/*  background-color: var(--blue);*/
-/*  color: white;*/
-/*}*/
-
-/*.cta-button {*/
-/*  margin-top: var(--space-32);*/
-/*  padding: var(--space-16) var(--space-32);*/
-/*  font-weight: 600;*/
-/*  font-size: var(--font-size-16);*/
-/*  border: 2px solid var(--black);*/
-/*  border-radius: var(--radius-8);*/
-/*  cursor: pointer;*/
-/*  transition: transform 0.2s ease, box-shadow 0.2s ease;*/
-/*}*/
-
-/*.cta-button:hover {*/
-/*  transform: translateY(-2px);*/
-/*  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);*/
-/*}*/
-
-/*.text-center {*/
-/*  text-align: center;*/
-/*}*/
-
-/*!* Position relative for dropdown positioning *!*/
-/*.form {*/
-/*  position: relative;*/
-/*}*/
-
-/*!* Style the position select container *!*/
-/*.form > div:has(#position-select) {*/
-/*  position: relative;*/
-/*}*/
-
-/*.table-header-section {*/
-/*  display: flex;*/
-/*  justify-content: space-between; !* заголовок слева, кнопка справа *!*/
-/*  align-items: center;*/
-/*}*/
-
 
 /*pagination*/
 .cdp {
@@ -1072,5 +915,4 @@
   .circle-button {
     border-radius: 50px;
   }
-
 }

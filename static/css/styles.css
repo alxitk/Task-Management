@@ -218,13 +218,6 @@ select {
   margin-top: 0;
 }
 
-/*.secondary-label {*/
-/*  display: block;*/
-/*  font-weight: 500;*/
-/*  font-size: var(--font-size-14);*/
-/*  margin-top: var(--space-16);*/
-/*}*/
-
 .input,
 .textarea-input{
   border: 2px solid var(--black);
@@ -246,12 +239,6 @@ select {
 textarea.input {
     min-height: 80px;
 }
-
-/*.status-select .arrow-icon {*/
-/*  transform: rotate(270deg);*/
-/*  !* move to top to fix alignment *!*/
-/*  margin-bottom: var(--space-8);*/
-/*}*/
 
 .status-dropdown {
   border: 2px solid var(--black);
@@ -278,15 +265,6 @@ textarea.input {
 .form .cta-button {
   margin-top: var(--space-32);
 }
-
-/*!* media queries *!*/
-/*@media (min-width: 768px) {*/
-/*  .divided-inputs-container {*/
-/*    display: grid;*/
-/*    grid-template-columns: repeat(3, 1fr);*/
-/*    column-gap: var(--space-16);*/
-/*  }*/
-/*}*/
 
 index-block {
   display: flex;
@@ -405,44 +383,6 @@ index-block {
   gap: var(--space-16);
   margin-top: var(--space-48);
 }
-
-/*.cta-button {*/
-/*  display: inline-flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  padding: var(--space-16) var(--space-32);*/
-/*  font-weight: 600;*/
-/*  font-size: var(--font-size-16);*/
-/*  border: 2px solid var(--black);*/
-/*  border-radius: var(--radius-8);*/
-/*  cursor: pointer;*/
-/*  transition: transform 0.2s ease, box-shadow 0.2s ease;*/
-/*  text-decoration: none;*/
-/*  min-width: 120px;*/
-/*}*/
-
-/*.back-button {*/
-/*  background-color: var(--white);*/
-/*  color: var(--black);*/
-/*  box-shadow: var(--gray-shadow);*/
-/*}*/
-
-/*.back-button:hover {*/
-/*  transform: translateY(-2px);*/
-/*  box-shadow: 6px 8px 0px var(--dark-gray);*/
-/*}*/
-
-/*.save-button {*/
-/*  background-color: var(--blue);*/
-/*  color: var(--black);*/
-/*  box-shadow: var(--black-shadow);*/
-/*}*/
-
-/*.save-button:hover {*/
-/*  transform: translateY(-2px);*/
-/*  box-shadow: 6px 8px 0px var(--black);*/
-/*  background-color: #6bc4ff;*/
-/*}*/
 
 /*!* stats *!*/
 .stats-container {
@@ -569,4 +509,3 @@ index-block {
     display: none;
   }
 }
-

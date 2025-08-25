@@ -24,7 +24,7 @@
         {% if form.instance.pk %}Update Worker{% else %}Add Worker{% endif %}
       </h1>
 
-      <form class="form" method="post" autocomplete="off">
+      <form class="form" method="post" autocomplete="off" novalidate>
         {% csrf_token %}
 
         {% for field in form %}

@@ -73,12 +73,6 @@
   transition: all 0.1s ease;
 }
 
-/*.counter-card small {*/
-/*  font-weight: 400;*/
-/*  font-size: 0.85rem;*/
-/*  margin-top: 5px;*/
-/*}*/
-
 /* media queries */
 @media (min-width: 768px) {
   .right-column {
