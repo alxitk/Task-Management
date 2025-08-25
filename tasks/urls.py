@@ -84,4 +84,9 @@ urlpatterns = [
         name="manage-task-users"
     ),
     path("tasks/status/<str:status>/", TaskStatusListView.as_view(), name="task-status-list"),
+    path(
+        "task_types/<int:task_type_id>/tasks/",
+        TasksListView.as_view(),
+        name="task-type-tasks",
+    ),
     ]
