@@ -3,7 +3,7 @@ from django.urls import path
 from tasks.views import index, TasksListView, TaskDetailView, TaskCreateView, TaskUpdateView, TaskDeleteView, \
     WorkerListView, WorkerCreateView, WorkerUpdateView, WorkerDeleteView, WorkerDetailView, toggle_assign_to_task, \
     PositionListView, PositionCreateView, PositionUpdateView, PositionDeleteView, TaskTypesListView, TaskTypeCreateView, \
-    TaskTypeUpdateView, TaskTypeDeleteView, CustomLoginView, set_task_status, manage_task_users
+    TaskTypeUpdateView, TaskTypeDeleteView, CustomLoginView, set_task_status, manage_task_users, TaskStatusListView
 
 app_name = "tasks"
 
@@ -83,4 +83,5 @@ urlpatterns = [
         manage_task_users,
         name="manage-task-users"
     ),
+    path("tasks/status/<str:status>/", TaskStatusListView.as_view(), name="task-status-list"),
     ]

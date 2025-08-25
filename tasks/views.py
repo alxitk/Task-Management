@@ -5,6 +5,7 @@ from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.utils.timezone import now
 from django.views import generic
 
 from tasks.forms import TaskSearchForm, TaskForm, WorkerSearchForm, WorkerCreateForm, WorkerUpdateForm, \
@@ -92,6 +93,31 @@ class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
 class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Task
     success_url = reverse_lazy("tasks:task-list")
+
+
+class TaskStatusListView(LoginRequiredMixin, generic.ListView):
+    model = Task
+    context_object_name = "task_list"
+    template_name = "tasks/task_status_list.html"
+    paginate_by = 5
+
+    STATUS_TITLES = {
+        "todo": "To Do",
+        "in_progress": "In Progress",
+        "needs_review": "Needs Review",
+        "done": "Done",
+    }
+
+    def get_queryset(self):
+        status = self.kwargs.get("status")
+        return Task.objects.filter(status=status)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        status = self.kwargs.get("status")
+        context["now"] = now()
+        context["task_status"] = self.STATUS_TITLES.get(status, "Tasks")
+        return context
 
 
 def set_task_status(request, pk):
