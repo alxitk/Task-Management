@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Project Board - TaskHub</title>
+<title>Project Board | TaskHub</title>
 {% endblock %}
 
 {% block content %}
@@ -51,7 +51,7 @@
             {% include 'includes/task_card_board.html' %}
           </li>
         {% empty %}
-          <li class="task-name">No tasks in todo</li>
+          <li class="no-tasks-message">No tasks in todo</li>
         {% endfor %}
       </ul>
     </div>
@@ -68,7 +68,7 @@
             {% include 'includes/task_card_board.html' %}
           </li>
         {% empty %}
-          <li class="task-name">No tasks needs review</li>
+          <li class="no-tasks-message">No tasks needs review</li>
         {% endfor %}
       </ul>
     </div>
@@ -85,7 +85,7 @@
             {% include 'includes/task_card_board.html' %}
           </li>
         {% empty %}
-          <li class="task-name">No tasks in done</li>
+          <li class="no-tasks-message">No tasks in done</li>
         {% endfor %}
       </ul>
     </div>
@@ -102,7 +102,7 @@
             {% include 'includes/task_card_board.html' %}
           </li>
         {% empty %}
-          <li class="task-name">No tasks in in progress</li>
+          <li class="no-tasks-message">No tasks in in progress</li>
         {% endfor %}
       </ul>
     </div>

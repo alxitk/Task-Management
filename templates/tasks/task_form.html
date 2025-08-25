@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 
 {% load static %}
+
 {% block title %}
-  <title>Welcome to TaskHub</title>
+  <title>
+    {% if form.instance.pk %}
+      Update Task | TaskHub
+    {% else %}
+      Create Task | TaskHub
+    {% endif %}
+  </title>
 {% endblock %}
 {% block content %}
 <div id="set-task-overlay" class="overlay set-task-overlay">

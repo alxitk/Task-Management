@@ -198,7 +198,8 @@ select {
 .circle {
   width: 14px;
   height: 14px;
-  border-radius: 100%;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .form {

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>{{ task.task_type }} - TaskHub</title>
+<title>{{ task.task_type }} | TaskHub</title>
 {% endblock %}
 
 {% block content %}
@@ -47,17 +47,17 @@
         </button>
 
         <!-- edit task -->
-        <a href="{% url 'tasks:task-update' pk=task.id %}" class="button  pink-background flex justify-center items-center">
+        <a href="{% url 'tasks:task-update' pk=task.id %}" class="button  pink-background flex justify-center items-center" title="Edit task">
           <iconify-icon icon="material-symbols:edit-rounded" style="color: black" width="24" height="24"></iconify-icon>
         </a>
 
         <!-- delete task -->
-        <a href="{% url 'tasks:task-delete' pk=task.id %}" class="button  pink-background flex justify-center items-center">
+        <a href="{% url 'tasks:task-delete' pk=task.id %}" class="button  pink-background flex justify-center items-center" title="Delete task">
           <iconify-icon icon="ic:round-delete" style="color: black" width="24" height="24"></iconify-icon>
         </a>
 
         <!-- manage users -->
-        <a href="{% url 'tasks:manage-task-users' pk=task.id %}" class="button circle-button pink-background flex justify-center items-center" title="Manage users">
+        <a href="{% url 'tasks:manage-task-users' pk=task.id %}" class="button pink-background flex justify-center items-center" title="Manage users">
           <iconify-icon icon="material-symbols:group" style="color: black" width="24" height="24"></iconify-icon>
         </a>
 
