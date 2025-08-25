@@ -6,7 +6,7 @@
     <div class="buttons-container">
       {% if user.is_authenticated %}
         <a href="{% url 'tasks:task-create' %}" class="button regular-button blue-background">Add task</a>
-        <a href="#" class="sign-out-cta">My profile</a>
+        <a href="{% url 'tasks:worker-detail' user.id %}" class="sign-out-cta">My profile</a>
         <a href="#" id="logout-link" class="sign-out-cta">Logout</a>
         <form id="logout-form" method="post" action="{% url 'logout' %}">
           {% csrf_token %}
