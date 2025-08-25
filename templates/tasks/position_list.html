@@ -61,7 +61,7 @@
                     </a>
                   </td>
                   <td class="table-cell worker-first-name">
-                    <a href="">{{ position.worker_count }}</a>
+                    <a href="{% url 'tasks:position-workers' position.id %}">{{ position.worker_count }}</a>
                   </td>
                   <td class="table-cell worker-last-name">
                     <a href="{% url 'tasks:position-update' pk=position.id %}" class="worker-link">

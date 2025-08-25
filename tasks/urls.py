@@ -89,4 +89,9 @@ urlpatterns = [
         TasksListView.as_view(),
         name="task-type-tasks",
     ),
+    path(
+        "positions/<int:position_id>/workers/",
+        WorkerListView.as_view(),
+        name="position-workers",
+    ),
     ]
