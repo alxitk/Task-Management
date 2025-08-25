@@ -21,9 +21,7 @@ class TaskSearchForm(forms.Form):
 class TaskForm(forms.ModelForm):
     assignees = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
-        widget=forms.CheckboxSelectMultiple(
-            attrs={"class": "checkbox-list"}
-        ),
+        widget=forms.CheckboxSelectMultiple(attrs={"class": "checkbox-list"}),
         label="Assignees",
         required=False,
     )
@@ -60,10 +58,17 @@ class TaskForm(forms.ModelForm):
         }
         widgets = {
             "name": forms.TextInput(
-                attrs={"class": "input white-background", "placeholder": "Enter task name..."}
+                attrs={
+                    "class": "input white-background",
+                    "placeholder": "Enter task name...",
+                }
             ),
             "description": forms.Textarea(
-                attrs={"class": "input white-background description", "rows": 40, "placeholder": "Enter task description..."}
+                attrs={
+                    "class": "input white-background description",
+                    "rows": 40,
+                    "placeholder": "Enter task description...",
+                }
             ),
             "priority": forms.Select(
                 attrs={"class": "input white-background"}
@@ -95,7 +100,8 @@ class WorkerCreateForm(UserCreationForm):
         label="Password",
         strip=False,
         widget=forms.PasswordInput(
-            attrs={"class": "input white-background", "placeholder": "Password"}
+            attrs={"class": "input white-background",
+                   "placeholder": "Password"}
         ),
     )
     password2 = forms.CharField(
@@ -119,7 +125,8 @@ class WorkerCreateForm(UserCreationForm):
         )
         widgets = {
             "username": forms.TextInput(
-                attrs={"class": "input white-background", "placeholder": "Username"}
+                attrs={"class": "input white-background",
+                       "placeholder": "Username"}
             ),
             "first_name": forms.TextInput(
                 attrs={"class": "input white-background",
@@ -129,7 +136,9 @@ class WorkerCreateForm(UserCreationForm):
                 attrs={"class": "input white-background",
                        "placeholder": "Last Name"}
             ),
-            "position": forms.Select(attrs={"class": "input white-background"}),
+            "position": forms.Select(
+                attrs={"class": "input white-background"}
+            ),
         }
 
 
@@ -139,7 +148,8 @@ class WorkerUpdateForm(forms.ModelForm):
         fields = ("username", "first_name", "last_name", "position")
         widgets = {
             "username": forms.TextInput(
-                attrs={"class": "input white-background", "placeholder": "Username"}
+                attrs={"class": "input white-background",
+                       "placeholder": "Username"}
             ),
             "first_name": forms.TextInput(
                 attrs={"class": "input white-background",
@@ -149,7 +159,9 @@ class WorkerUpdateForm(forms.ModelForm):
                 attrs={"class": "input white-background",
                        "placeholder": "Last Name"}
             ),
-            "position": forms.Select(attrs={"class": "input white-background"}),
+            "position": forms.Select(
+                attrs={"class": "input white-background"}
+            ),
         }
 
 
@@ -158,10 +170,8 @@ class PositionSearchForm(forms.Form):
         label="",
         required=False,
         widget=forms.TextInput(
-            attrs={
-                "placeholder": "Search position...",
-                "class": "search-input",
-            }
+            attrs={"placeholder": "Search position...",
+                   "class": "search-input", }
         ),
     )
 
@@ -171,8 +181,10 @@ class PositionForm(forms.ModelForm):
         model = Position
         fields = "__all__"
         widgets = {
-            "position": forms.TextInput(attrs={"class": "input white-background",
-                                               "placeholder": "Enter position..."}),
+            "position": forms.TextInput(
+                attrs={"class": "input white-background",
+                       "placeholder": "Enter position...", }
+            ),
         }
 
 
@@ -181,8 +193,10 @@ class TaskTypeForm(forms.ModelForm):
         model = TaskType
         fields = "__all__"
         widgets = {
-            "name": forms.TextInput(attrs={"class": "input white-background",
-                                           "placeholder": "Enter task type name..."}),
+            "name": forms.TextInput(
+                attrs={"class": "input white-background",
+                       "placeholder": "Enter task type name...", }
+            ),
         }
 
 
@@ -191,20 +205,22 @@ class TaskTypeSearchForm(forms.Form):
         label="",
         required=False,
         widget=forms.TextInput(
-            attrs={
-                "placeholder": "Search task type...",
-                "class": "search-input",
-            }
+            attrs={"placeholder": "Search task type...",
+                   "class": "search-input", }
         ),
     )
 
 
 class CustomAuthenticationForm(AuthenticationForm):
     username = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input',})
+        widget=forms.TextInput(
+            attrs={"class": "input", }
+        )
     )
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'input',})
+        widget=forms.PasswordInput(
+            attrs={"class": "input", }
+        )
     )
 
 

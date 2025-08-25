@@ -30,9 +30,11 @@ class WorkerModelTest(TestCase):
 
     def test_worker_str_method(self):
         worker = Worker.objects.get(id=1)
-        expected_str = (f"{worker.first_name} "
-                        f"{worker.last_name} "
-                        f"({worker.position})")
+        expected_str = (
+            f"{worker.first_name} "
+            f"{worker.last_name} "
+            f"({worker.position})"
+        )
         self.assertEqual(str(worker), expected_str)
 
     def test_workers_ordering(self):

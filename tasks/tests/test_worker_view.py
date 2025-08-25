@@ -61,7 +61,7 @@ class WorkerListViewTest(TestCase):
 
     def test_worker_queryset_filtered_by_first_name(self):
         self.client.force_login(self.user)
-        worker_Alex = Worker.objects.create(
+        Worker.objects.create(
             username="Alex",
             first_name="Test first name",
             last_name="Test last name",

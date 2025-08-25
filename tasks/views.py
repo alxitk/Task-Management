@@ -8,8 +8,19 @@ from django.urls import reverse_lazy
 from django.utils.timezone import now
 from django.views import generic
 
-from tasks.forms import TaskSearchForm, TaskForm, WorkerSearchForm, WorkerCreateForm, WorkerUpdateForm, \
-    PositionSearchForm, PositionForm, TaskTypeForm, TaskTypeSearchForm, CustomAuthenticationForm, AssignUserForm
+from tasks.forms import (
+    TaskSearchForm,
+    TaskForm,
+    WorkerSearchForm,
+    WorkerCreateForm,
+    WorkerUpdateForm,
+    PositionSearchForm,
+    PositionForm,
+    TaskTypeForm,
+    TaskTypeSearchForm,
+    CustomAuthenticationForm,
+    AssignUserForm,
+)
 from tasks.models import Worker, Task, TaskType, Position
 
 
@@ -39,6 +50,7 @@ def index(request):
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
 
+
 class TasksListView(LoginRequiredMixin, generic.ListView):
     model = Task
     context_object_name = "task_list"
@@ -60,11 +72,15 @@ class TasksListView(LoginRequiredMixin, generic.ListView):
 
         filtered_queryset = self.get_queryset()
 
-        context["todo_tasks"] = filtered_queryset.filter(status="todo")
+        context["todo_tasks"] = filtered_queryset.filter(
+            status="todo"
+        )
         context["in_progress_tasks"] = filtered_queryset.filter(
             status="in_progress"
         )
-        context["done_tasks"] = filtered_queryset.filter(status="done")
+        context["done_tasks"] = filtered_queryset.filter(
+            status="done"
+                                                         )
         context["needs_review_tasks"] = filtered_queryset.filter(
             status="needs_review"
         )
@@ -204,7 +220,9 @@ def manage_task_users(request, pk):
         form = AssignUserForm(initial={"users": task.assignees.all()})
 
     return render(
-        request, "tasks/manage_users_for_task.html", {"task": task, "form": form}
+        request,
+        "tasks/manage_users_for_task.html",
+        {"task": task, "form": form}
     )
 
 
@@ -258,9 +276,7 @@ class TaskTypesListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, *, object_list=..., **kwargs):
         context = super(TaskTypesListView, self).get_context_data(**kwargs)
         name = self.request.GET.get("name", "")
-        context["search_form"] = TaskTypeSearchForm(
-            initial={"name": name}
-        )
+        context["search_form"] = TaskTypeSearchForm(initial={"name": name})
         return context
 
     def get_queryset(self):

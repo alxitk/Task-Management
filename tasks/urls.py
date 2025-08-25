@@ -1,9 +1,31 @@
 from django.urls import path
 
-from tasks.views import index, TasksListView, TaskDetailView, TaskCreateView, TaskUpdateView, TaskDeleteView, \
-    WorkerListView, WorkerCreateView, WorkerUpdateView, WorkerDeleteView, WorkerDetailView, toggle_assign_to_task, \
-    PositionListView, PositionCreateView, PositionUpdateView, PositionDeleteView, TaskTypesListView, TaskTypeCreateView, \
-    TaskTypeUpdateView, TaskTypeDeleteView, CustomLoginView, set_task_status, manage_task_users, TaskStatusListView
+from tasks.views import (
+    index,
+    TasksListView,
+    TaskDetailView,
+    TaskCreateView,
+    TaskUpdateView,
+    TaskDeleteView,
+    WorkerListView,
+    WorkerCreateView,
+    WorkerUpdateView,
+    WorkerDeleteView,
+    WorkerDetailView,
+    toggle_assign_to_task,
+    PositionListView,
+    PositionCreateView,
+    PositionUpdateView,
+    PositionDeleteView,
+    TaskTypesListView,
+    TaskTypeCreateView,
+    TaskTypeUpdateView,
+    TaskTypeDeleteView,
+    CustomLoginView,
+    set_task_status,
+    manage_task_users,
+    TaskStatusListView,
+)
 
 app_name = "tasks"
 
@@ -16,24 +38,20 @@ urlpatterns = [
     ),
     path("tasks/<int:pk>/", TaskDetailView.as_view(), name="task-detail"),
     path("tasks/create/", TaskCreateView.as_view(), name="task-create"),
-    path(
-        "tasks/<int:pk>/update/", TaskUpdateView.as_view(), name="task-update"
-    ),
-    path(
-        "tasks/<int:pk>/delete/", TaskDeleteView.as_view(), name="task-delete"
-    ),
+    path("tasks/<int:pk>/update/",
+         TaskUpdateView.as_view(),
+         name="task-update"),
+    path("tasks/<int:pk>/delete/",
+         TaskDeleteView.as_view(),
+         name="task-delete"),
     path("workers/", WorkerListView.as_view(), name="worker-list"),
     path("worker/create/", WorkerCreateView.as_view(), name="worker-create"),
-    path(
-        "worker/<int:pk>/update/",
-        WorkerUpdateView.as_view(),
-        name="worker-update"
-    ),
-    path(
-        "worker/<int:pk>/delete/",
-        WorkerDeleteView.as_view(),
-        name="worker-delete"
-    ),
+    path("worker/<int:pk>/update/",
+         WorkerUpdateView.as_view(),
+         name="worker-update"),
+    path("worker/<int:pk>/delete/",
+         WorkerDeleteView.as_view(),
+         name="worker-delete"),
     path("worker/<int:pk>/", WorkerDetailView.as_view(), name="worker-detail"),
     path(
         "tasks/<int:pk>/toggle-assign/",
@@ -76,14 +94,16 @@ urlpatterns = [
         TaskTypeDeleteView.as_view(),
         name="task_type_delete",
     ),
-    path('accounts/login/', CustomLoginView.as_view(), name='login'),
+    path("accounts/login/", CustomLoginView.as_view(), name="login"),
     path("task/<int:pk>/set-status/", set_task_status, name="set-status"),
+    path("tasks/<int:pk>/manage-users/",
+         manage_task_users,
+         name="manage-task-users"),
     path(
-        "tasks/<int:pk>/manage-users/",
-        manage_task_users,
-        name="manage-task-users"
+        "tasks/status/<str:status>/",
+        TaskStatusListView.as_view(),
+        name="task-status-list",
     ),
-    path("tasks/status/<str:status>/", TaskStatusListView.as_view(), name="task-status-list"),
     path(
         "task_types/<int:task_type_id>/tasks/",
         TasksListView.as_view(),
@@ -94,4 +114,4 @@ urlpatterns = [
         WorkerListView.as_view(),
         name="position-workers",
     ),
-    ]
+]
