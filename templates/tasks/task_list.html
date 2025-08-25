@@ -43,7 +43,7 @@
     <div>
       <h2 class="list-header">
         <span class="circle gray-background"></span>
-        <a href="" class="text">To do</a>
+        <a href="{% url 'tasks:task-status-list' 'todo' %}" class="text">To do</a>
       </h2>
       <ul class="tasks-list gray">
         {% for task in todo_tasks %}
@@ -60,7 +60,7 @@
     <div>
       <h2 class="list-header">
         <span class="circle pink-background"></span>
-        <a href="" class="text">Needs Review</a>
+        <a href="{% url 'tasks:task-status-list' 'needs_review' %}" class="text">Needs Review</a>
       </h2>
       <ul class="tasks-list pink">
         {% for task in needs_review_tasks %}
@@ -77,7 +77,7 @@
     <div>
       <h2 class="list-header">
         <span class="circle blue-background"></span>
-        <a href="" class="text">Done</a>
+        <a href="{% url 'tasks:task-status-list' 'done' %}" class="text">Done</a>
       </h2>
       <ul class="tasks-list blue">
         {% for task in done_tasks %}
@@ -94,7 +94,7 @@
     <div>
       <h2 class="list-header">
         <span class="circle green-background"></span>
-        <a href="" class="text">In Progress</a>
+        <a href="{% url 'tasks:task-status-list' 'in_progress' %}" class="text">In Progress</a>
       </h2>
       <ul class="tasks-list green">
         {% for task in in_progress_tasks %}
