@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>{{ task_status }} Tasks | TaskHub</title>
+{% endblock %}
+
+{% block content %}
+  <!-- list view -->
+  <div class="content-container max-width-container">
+    <div class="list-view">
+    {% with status=task_list.0.status %}
+      <div class="list-container
+                  {% if status == 'todo' %}grey
+                  {% elif status == 'in_progress' %}green
+                  {% elif status == 'needs_review' %}pink
+                  {% elif status == 'done' %}blue
+                  {% endif %}">
+
+        <h2 class="list-header">
+          <span class="circle
+                       {% if status == 'todo' %}gray-background
+                       {% elif status == 'in_progress' %}green-background
+                       {% elif status == 'needs_review' %}pink-background
+                       {% elif status == 'done' %}blue-background
+                       {% endif %}">
+          </span>
+          <span class="text">{{ status|capfirst }}</span>
+        </h2>
+
+        <ul class="tasks-list">
+          {% for task in task_list %}
+            <li class="task-item">
+              {% include 'includes/task_card_list.html' %}
+            </li>
+          {% empty %}
+            <li class="task-name">No tasks available</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endwith %}
+  </div>
+  </div>
+  {% include "includes/pagination.html" %}
+{% endblock %}

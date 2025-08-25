@@ -1,0 +1,12 @@
+<button class="task-button">
+    <a href="{% url 'tasks:task-detail' pk=task.id %}" class="task-name">{{ task.task_type}}</a>
+    <p class="task-due-date">Due on {{ task.deadline|date:"F j, Y" }}</p>
+  <!-- arrow -->
+  <iconify-icon
+    icon="material-symbols:arrow-back-ios-rounded"
+    style="color: black"
+    width="18"
+    height="18"
+    class="arrow-icon"
+  ></iconify-icon>
+</button>
