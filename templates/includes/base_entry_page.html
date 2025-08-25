@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% block title %}
-      <title>Task Management System - Dashboard</title>
+      <title>Taskhub</title>
     {% endblock %}
     <!-- google font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,29 +15,14 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <!-- styles css -->
+
+    <!-- main css -->
     <link rel="stylesheet" href="/static/css/styles.css" />
     <link rel="stylesheet" href="/static/css/entry-page.css" />
-    <link rel="stylesheet" href="/static/css/dashboard.css" />
-
   </head>
   <body>
-
-    <div class="content-container">
-      <!-- header -->
-      {% block header %}
-        {% include "includes/header.html" %}
-      {% endblock %}
-      <!-- content -->
-      {% block content %}
-      {% endblock %}
-    </div>
-  <script src="{% static 'js/manage_users.js' %}"></script>
-  <script src="{% static 'js/status-modal.js' %}"></script>
-  <script src="{% static 'js/task_form_dropdown.js' %}"></script>
-  <script src="{% static 'js/logout.js' %}"></script>
-  <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+    {% block content %}
+    {% endblock %}
+    <script src="{% static 'js/counters.js' %}"></script>
   </body>
 </html>
-
-

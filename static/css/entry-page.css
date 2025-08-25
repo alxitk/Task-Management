@@ -11,9 +11,9 @@
   font-size: var(--font-size-24);
 }
 
-/*.form {*/
-/*  max-width: 338px;*/
-/*}*/
+.login-form {
+  max-width: 338px;
+}
 
 .cta-btn {
   width: 100%;
