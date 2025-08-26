@@ -12,7 +12,6 @@ from tasks.views import (
     WorkerUpdateView,
     WorkerDeleteView,
     WorkerDetailView,
-    toggle_assign_to_task,
     PositionListView,
     PositionCreateView,
     PositionUpdateView,
@@ -25,6 +24,7 @@ from tasks.views import (
     set_task_status,
     manage_task_users,
     TaskStatusListView,
+    ToggleAssignToTaskView,
 )
 
 app_name = "tasks"
@@ -55,7 +55,7 @@ urlpatterns = [
     path("worker/<int:pk>/", WorkerDetailView.as_view(), name="worker-detail"),
     path(
         "tasks/<int:pk>/toggle-assign/",
-        toggle_assign_to_task,
+        ToggleAssignToTaskView.as_view(),
         name="toggle-task-assign",
     ),
     path("positions/", PositionListView.as_view(), name="position-list"),

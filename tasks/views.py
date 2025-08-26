@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils.timezone import now
-from django.views import generic
+from django.views import generic, View
 
 from tasks.forms import (
     TaskSearchForm,
@@ -196,14 +196,15 @@ class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
     queryset = Worker.objects.all().prefetch_related("tasks__assignees")
 
 
-def toggle_assign_to_task(request, pk):
-    task = get_object_or_404(Task, id=pk)
-    user = request.user
-    if user in task.assignees.all():
-        task.assignees.remove(user)
-    else:
-        task.assignees.add(user)
-    return HttpResponseRedirect(reverse_lazy("tasks:task-detail", args=[pk]))
+class ToggleAssignToTaskView(View):
+    def post(self, request, pk, *args, **kwargs):
+        task = get_object_or_404(Task, id=pk)
+        user = request.user
+        if user in task.assignees.all():
+            task.assignees.remove(user)
+        else:
+            task.assignees.add(user)
+        return HttpResponseRedirect(reverse_lazy("tasks:task-detail", args=[pk]))
 
 
 def manage_task_users(request, pk):
