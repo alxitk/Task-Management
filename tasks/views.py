@@ -232,25 +232,6 @@ class ManageTaskUsersView(View):
             {"task": task, "form": form}
         )
 
-# def manage_task_users(request, pk):
-#     task = get_object_or_404(Task, pk=pk)
-#
-#     if request.method == "POST":
-#         form = AssignUserForm(request.POST)
-#         if form.is_valid():
-#             selected_users = form.cleaned_data["users"]
-#
-#             task.assignees.set(selected_users)
-#             return redirect("tasks:task-detail", pk=pk)
-#     else:
-#         form = AssignUserForm(initial={"users": task.assignees.all()})
-#
-#     return render(
-#         request,
-#         "tasks/manage_users_for_task.html",
-#         {"task": task, "form": form}
-#     )
-
 
 class PositionListView(LoginRequiredMixin, generic.ListView):
     model = Position
