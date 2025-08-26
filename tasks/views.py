@@ -207,24 +207,49 @@ class ToggleAssignToTaskView(View):
         return HttpResponseRedirect(reverse_lazy("tasks:task-detail", args=[pk]))
 
 
-def manage_task_users(request, pk):
-    task = get_object_or_404(Task, pk=pk)
+class ManageTaskUsersView(View):
+    def get(self, request, pk, *args, **kwargs):
+        task = get_object_or_404(Task, pk=pk)
+        form = AssignUserForm(initial={"users": task.assignees.all()})
+        return render(
+            request,
+            "tasks/manage_users_for_task.html",
+            {"task": task, "form": form}
+        )
 
-    if request.method == "POST":
+    def post(self, request, pk, *args, **kwargs):
+        task = get_object_or_404(Task, pk=pk)
         form = AssignUserForm(request.POST)
+
         if form.is_valid():
             selected_users = form.cleaned_data["users"]
-
             task.assignees.set(selected_users)
             return redirect("tasks:task-detail", pk=pk)
-    else:
-        form = AssignUserForm(initial={"users": task.assignees.all()})
 
-    return render(
-        request,
-        "tasks/manage_users_for_task.html",
-        {"task": task, "form": form}
-    )
+        return render(
+            request,
+            "tasks/manage_users_for_task.html",
+            {"task": task, "form": form}
+        )
+
+# def manage_task_users(request, pk):
+#     task = get_object_or_404(Task, pk=pk)
+#
+#     if request.method == "POST":
+#         form = AssignUserForm(request.POST)
+#         if form.is_valid():
+#             selected_users = form.cleaned_data["users"]
+#
+#             task.assignees.set(selected_users)
+#             return redirect("tasks:task-detail", pk=pk)
+#     else:
+#         form = AssignUserForm(initial={"users": task.assignees.all()})
+#
+#     return render(
+#         request,
+#         "tasks/manage_users_for_task.html",
+#         {"task": task, "form": form}
+#     )
 
 
 class PositionListView(LoginRequiredMixin, generic.ListView):

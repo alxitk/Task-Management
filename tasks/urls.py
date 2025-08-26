@@ -22,9 +22,8 @@ from tasks.views import (
     TaskTypeDeleteView,
     CustomLoginView,
     set_task_status,
-    manage_task_users,
     TaskStatusListView,
-    ToggleAssignToTaskView,
+    ToggleAssignToTaskView, ManageTaskUsersView,
 )
 
 app_name = "tasks"
@@ -97,7 +96,7 @@ urlpatterns = [
     path("accounts/login/", CustomLoginView.as_view(), name="login"),
     path("task/<int:pk>/set-status/", set_task_status, name="set-status"),
     path("tasks/<int:pk>/manage-users/",
-         manage_task_users,
+         ManageTaskUsersView.as_view(),
          name="manage-task-users"),
     path(
         "tasks/status/<str:status>/",
