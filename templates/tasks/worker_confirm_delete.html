@@ -10,7 +10,7 @@
   <div class="content-container max-width-container">
     <div class="overlay-content pink-background">
       <!-- close button -->
-      <a href=""
+      <a href="{% url 'tasks:worker-detail' pk=worker.id %}"
          class="button circle-button blue-background flex justify-center items-center close-button">
         <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="26" height="26"></iconify-icon>
       </a>
