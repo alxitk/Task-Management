@@ -196,7 +196,7 @@ class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
     queryset = Worker.objects.all().prefetch_related("tasks__assignees")
 
 
-class ToggleAssignToTaskView(View):
+class ToggleAssignToTaskView(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         task = get_object_or_404(Task, id=pk)
         user = request.user
@@ -207,7 +207,7 @@ class ToggleAssignToTaskView(View):
         return HttpResponseRedirect(reverse_lazy("tasks:task-detail", args=[pk]))
 
 
-class ManageTaskUsersView(View):
+class ManageTaskUsersView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         task = get_object_or_404(Task, pk=pk)
         form = AssignUserForm(initial={"users": task.assignees.all()})
