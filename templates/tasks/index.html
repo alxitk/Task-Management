@@ -1,0 +1,59 @@
+{% extends 'includes/base_entry_page.html' %}
+
+{% load static %}
+
+{% block title %}
+  <title>Welcome to TaskHub</title>
+{% endblock %}
+{% block content %}
+<div class="row height-full">
+  <!-- left side -->
+  <div class="row left-column flex flex-column height-full justify-center items-center">
+    <div class="index-block">
+      <h1 class="welcoming-title">Welcome to TaskHub</h1>
+      <h3 class="value">Manage your tasks effortlessly. Collaborate, set priorities, track deadlines — all in one place.</h3>
+      <ul>
+        <li>🗂 User-friendly task board (To Do / In Progress / Done)</li>
+        <li>🔍 Search and filter by task name and type</li>
+        <li>🧠 Assign priorities and assignees</li>
+        <li>📆 Deadlines and progress tracking</li>
+        <li>🔐 Only authorized users have access</li>
+      </ul>
+    </div>
+    <div>
+      <a href="{% url 'tasks:task-list' %}" class="button pink-background flex justify-center items-center">go to tasks</a>
+      <a href="{% url 'tasks:worker-list' %}" class="button pink-background flex justify-center items-center">go to workers</a>
+    </div>
+  </div>
+
+  <!-- right side -->
+  <div class="right-column">
+      <div class="counter-container">
+        <a href="{% url 'tasks:worker-list' %}">
+          <div class="counter-card blue-background">
+            <div class="counter" data-target="{{ num_workers }}">0</div>
+              <small>Workers</small>
+          </div>
+        </a>
+        <a href="{% url 'tasks:task-list' %}">
+          <div class="counter-card green-background">
+            <div class="counter" data-target="{{ num_tasks }}">0</div>
+              <small>Tasks</small>
+          </div>
+        </a>
+        <a href="{% url 'tasks:task_types_list' %}">
+          <div class="counter-card pink-background">
+            <div class="counter" data-target="{{ num_task_types }}">0</div>
+              <small>Task Types</small>
+          </div>
+        </a>
+        <a href="{% url 'tasks:position-list' %}">
+          <div class="counter-card gray-background">
+            <div class="counter" data-target="{{ num_positions }}">0</div>
+              <small>Positions</small>
+            </div>
+          </a>
+        </div>
+      </div>
+  </div>
+{% endblock %}

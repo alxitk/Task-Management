@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>
+  {% if form.instance.pk %}
+    Update {{ form.instance.username }} | TaskHub
+  {% else %}
+    Create Worker | TaskHub
+  {% endif %}
+</title>
+{% endblock %}
+
+{% block content %}
+<div id="worker-form-overlay" class="overlay set-task-overlay">
+    <div class="overlay-content green-background">
+
+      <!-- close button -->
+      <a href="{% url 'tasks:worker-list' %}"
+         class="button circle-button blue-background flex justify-center items-center close-button">
+        <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="26" height="26"></iconify-icon>
+      </a>
+
+      <h1 class="header">
+        {% if form.instance.pk %}Update Worker{% else %}Add Worker{% endif %}
+      </h1>
+
+      <form class="form" method="post" autocomplete="off" novalidate>
+        {% csrf_token %}
+
+        {% for field in form %}
+          <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+
+          {{ field }}
+
+          {% if field.errors %}
+            <div class="field-errors">
+              {% for error in field.errors %}
+                <p class="error-message">{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        <div class="text-center">
+          <button type="submit" class="button regular-button blue-background cta-button">
+            {% if form.instance.pk %}Update Worker{% else %}Add Worker{% endif %}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

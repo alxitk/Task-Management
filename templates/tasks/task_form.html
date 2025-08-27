@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  <title>
+    {% if form.instance.pk %}
+      Update Task | TaskHub
+    {% else %}
+      Create Task | TaskHub
+    {% endif %}
+  </title>
+{% endblock %}
+{% block content %}
+<div id="set-task-overlay" class="overlay set-task-overlay">
+  <div class="overlay-content blue-background">
+    <!-- close button -->
+    <a href="{% url 'tasks:task-list' %}"
+       class="button circle-button pink-background flex justify-center items-center close-button">
+      <iconify-icon icon="material-symbols:close-rounded" style="color: black" width="26" height="26"></iconify-icon>
+    </a>
+
+    <!-- dynamic header based on edit mode -->
+    <h1 class="header">
+      {% if form.instance.pk %}
+        Update task
+      {% else %}
+        Add task
+      {% endif %}
+    </h1>
+
+    <form class="form" method="post" autocomplete="off" novalidate>
+      {% csrf_token %}
+
+      <!-- task name -->
+      <label for="{{ form.name.id_for_label }}" class="label">{{ form.name.label }}</label>
+      {{ form.name }}
+      {% if form.name.errors %}
+        <div class="error-message">{{ form.name.errors }}</div>
+      {% endif %}
+
+      <!-- description -->
+      <label for="{{ form.description.id_for_label }}" class="label">{{ form.description.label }}</label>
+      {{ form.description }}
+      {% if form.description.errors %}
+        <div class="error-message">{{ form.description.errors }}</div>
+      {% endif %}
+
+      <!-- deadline -->
+      <label for="{{ form.deadline.id_for_label }}" class="label">{{ form.deadline.label }}</label>
+      {{ form.deadline }}
+      {% if form.deadline.errors %}
+        <div class="error-message">{{ form.deadline.errors }}</div>
+      {% endif %}
+
+      <!-- priority -->
+      <h2 class="label">{{ form.priority.label }}</h2>
+      <div>
+        {{ form.priority }}
+        {% if form.priority.errors %}
+          <div class="error-message">{{ form.priority.errors }}</div>
+        {% endif %}
+      </div>
+
+      <!-- task type -->
+      <h2 class="label">{{ form.task_type.label }}</h2>
+      <div>
+        {{ form.task_type }}
+        {% if form.task_type.errors %}
+          <div class="error-message">{{ form.task_type.errors }}</div>
+        {% endif %}
+      </div>
+
+      <!-- status -->
+      <h2 class="label">{{ form.status.label }}</h2>
+      <div>
+        {{ form.status }}
+        {% if form.status.errors %}
+          <div class="error-message">{{ form.status.errors }}</div>
+        {% endif %}
+      </div>
+
+      <!-- assignees -->
+      <h2 class="label">{{ form.assignees.label }}</h2>
+      <div>
+        <button type="button" id="assignees-select" class="input flex items-center justify-between cursor-pointer white-background">
+          <span id="assignees-display">Select assignees</span>
+        </button>
+
+        <!-- assignees dropdown -->
+        <div id="assignees-dropdown" class="status-dropdown hide green-background">
+          {{ form.assignees }}
+        </div>
+
+        {% if form.assignees.errors %}
+          <div class="error-message">{{ form.assignees.errors }}</div>
+        {% endif %}
+      </div>
+
+      <!-- global form errors -->
+      {% if form.non_field_errors %}
+        <div class="error-message">{{ form.non_field_errors }}</div>
+      {% endif %}
+
+      <div class="text-center">
+        <!-- dynamic button text and style -->
+        <button
+          type="submit"
+          class="button regular-button {% if form.instance.pk %}pink-background{% else %}pink-background{% endif %} cta-button"
+        >
+          {% if form.instance.pk %}
+            Update task
+          {% else %}
+            Add task
+          {% endif %}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

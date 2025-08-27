@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Workers List | TaskHub</title>
+{% endblock %}
+
+{% block content %}
+<div class="content-container max-width-container">
+
+  <!-- search form -->
+  <div class="search-form">
+    <form action="" method="get" class="search-container">
+      <div class="search-input-wrapper">
+        {{ search_form.username }}
+      </div>
+      <button type="submit" class="search-button">Search</button>
+
+      {% if request.GET.username %}
+        <a href="{% url 'tasks:worker-list' %}" class="clear-search">Clear</a>
+      {% endif %}
+    </form>
+
+    {% if request.GET.username %}
+      <div class="search-results-info {% if worker_list %}has-results{% else %}no-results{% endif %}">
+        {% if worker_list %}
+          Found {{ worker_list|length }} username{{ worker_list|length|pluralize }} for "{{ request.GET.username }}"
+        {% else %}
+          No workers found for "{{ request.GET.username }}"
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- workers table view -->
+  <div class="workers-table-view">
+    <div class="table-container">
+
+      <div class="table-header-section">
+        <h2 class="">Workers List</h2>
+        <a href="{% url 'tasks:worker-create' %}" class="button regular-button blue-background">+ Add Worker</a>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="workers-table">
+          <thead>
+            <tr>
+              <th class="table-header-cell">ID</th>
+              <th class="table-header-cell">Username</th>
+              <th class="table-header-cell">First Name</th>
+              <th class="table-header-cell">Last Name</th>
+              <th class="table-header-cell">Position</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for worker in worker_list %}
+              <tr class="worker-row">
+                <td class="table-cell worker-id">
+                    {{ worker.id }}
+                </td>
+
+                <td class="table-cell worker-username header">
+                  <a href="{% url 'tasks:worker-detail' pk=worker.id %}" class="sign-out-cta">
+                    <span>{{ worker.username }}</span>
+                    {% if user == worker %}
+                      <span class="current-user-badge">(Me)</span>
+                    {% endif %}
+                  </a>
+                </td>
+
+                <td class="table-cell worker-first-name">{{ worker.first_name }}</td>
+                <td class="table-cell worker-last-name">{{ worker.last_name }}</td>
+                <td class="table-cell worker-position">{{ worker.position }}</td>
+              </tr>
+            {% empty %}
+              <tr class="empty-row">
+                <td colspan="6" class="table-cell empty-message">
+                  {% if not request.GET.username %}
+                    No workers available
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'includes/pagination.html' %}
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Position List | TaskHub</title>
+{% endblock %}
+
+{% block content %}
+  <div class="content-container max-width-container">
+
+    <!-- search form -->
+    <div class="search-form">
+      <form action="" method="get" class="search-container">
+      <div class="search-input-wrapper">
+        {{ search_form.position }}
+      </div>
+      <button type="submit" class="search-button">Search</button>
+
+      {% if request.GET.position %}
+        <a href="{% url 'tasks:position-list' %}" class="clear-search">Clear</a>
+      {% endif %}
+      </form>
+
+      {% if request.GET.position %}
+        <div class="search-results-info {% if position_list %}has-results{% else %}no-results{% endif %}">
+          {% if position_list %}
+            Found {{ position_list|length }} position{{ position_list|length|pluralize }} for "{{ request.GET.position }}"
+          {% else %}
+            No positions found for "{{ request.GET.position }}"
+          {% endif %}
+        </div>
+      {% endif %}
+</div>
+
+    <!-- position table view -->
+    <div class="workers-table-view">
+      <div class="table-container">
+
+        <div class="table-header-section">
+          <h2 class="table-title">Position List</h2>
+          <a href="{% url 'tasks:position-create' %}" class="button regular-button blue-background">+ Add Position</a>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="workers-table">
+            <thead>
+              <tr>
+                <th class="table-header-cell">ID</th>
+                <th class="table-header-cell">Position</th>
+                <th class="table-header-cell">Employees</th>
+                <th class="table-header-cell">Update</th>
+                <th class="table-header-cell">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for position in position_list %}
+                <tr class="worker-row">
+                  <td class="table-cell worker-id">{{ position.id }}</td>
+                  <td class="table-cell worker-username">
+                    <a href="" class="worker-link">
+                      <span class="username-text">{{ position.position }}</span>
+                    </a>
+                  </td>
+                  <td class="table-cell worker-first-name">
+                    <a href="{% url 'tasks:position-workers' position.id %}">{{ position.worker_count }}</a>
+                  </td>
+                  <td class="table-cell worker-last-name">
+                    <a href="{% url 'tasks:position-update' pk=position.id %}" class="worker-link">
+                      Update
+                    </a>
+                  </td>
+                  <td class="table-cell worker-position">
+                    <a href="{% url 'tasks:position-delete' pk=position.id %}" class="worker-link">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              {% empty %}
+                <tr class="empty-row">
+                  <td colspan="5" class="table-cell empty-message">
+                    {% if not request.GET.position %}
+                      No positions available
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    </div>
+  {% include 'includes/pagination.html' %}
+{% endblock %}
