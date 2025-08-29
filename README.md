@@ -20,9 +20,14 @@ python manage.py runserver
 After running these commands, navigate to http://127.0.0.1:8000/ to access the application.
 ```
 
-You will need to log in with the superuser credentials you created since this is a portfolio project with authentication required.
-user: task_admin
-password: superuser
+To access the app, authentication is required.
+A superuser account has already been created for demonstration:   
+	•	Username: task_admin   
+	•	Password: superuser
+
+Alternatively, you can create your own superuser by running:
+`'python manage.py createsuperuser'`
+
 
 ### Initial Configuration
 
