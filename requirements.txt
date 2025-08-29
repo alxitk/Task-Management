@@ -6,12 +6,15 @@ django-crispy-forms==2.4
 django-extensions==4.1
 flake8==7.3.0
 graphviz==0.21
+gunicorn==23.0.0
 mccabe==0.7.0
 mypy_extensions==1.1.0
 packaging==25.0
 pathspec==0.12.1
 platformdirs==4.3.8
+psycopg2-binary==2.9.10
 pycodestyle==2.14.0
 pyflakes==3.4.0
 python-dotenv==1.1.1
 sqlparse==0.5.3
+whitenoise==6.9.0
