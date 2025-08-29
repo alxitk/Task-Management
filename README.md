@@ -74,7 +74,7 @@ Even though this information can be found inside the project on machine-readable
 format like in a .json file, it's good to include a summary of most useful
 links to humans using your project. You can include links like:
 
-- Project homepage: Coming soon
+- Project homepage: https://task-management-09w3.onrender.com/
 - Repository:  https://github.com/alxitk/Task-Management
 - Issue tracker:  https://github.com/alxitk/Task-Management/issues
   - Note: This is a portfolio/educational project created for learning purposes.
